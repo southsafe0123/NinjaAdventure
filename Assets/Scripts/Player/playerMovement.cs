@@ -9,12 +9,16 @@ public class playerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashDuration;
     public float dashCooldown;
+    private float moveX;
+    private float moveY;
     bool isDashing;
     bool canDash = true;
+    public Vector3 dashTarget;
+    public TrailRenderer tr;
     // Start is called before the first frame update
     void Start()
     {
-        
+        dashTarget = transform.position;
     }
 
     // Update is called once per frame
@@ -25,29 +29,35 @@ public class playerMovement : MonoBehaviour
             return;
         }
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
+
         playerMove(moveX, moveY);
 
-        if (Input.GetKey(KeyCode.Space) && canDash)
+        if (Input.GetMouseButton(1) && canDash)
         {
-            StartCoroutine(playerDashing(moveX, moveY));
+            StartCoroutine(playerDashing());
         }
     }
 
     void playerMove(float moveX, float moveY)
     {
-        
         rb.velocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
     }
 
-    IEnumerator playerDashing(float moveX, float moveY)
+    IEnumerator playerDashing()
     {
+        dashTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dashTarget.z = transform.position.z;
+        Vector3 dashDirection = dashTarget - transform.position;
+        dashDirection.Normalize();
         canDash = false;
         isDashing = true;
-        rb.velocity = new Vector2(moveX * dashSpeed, moveY * dashSpeed);
+        tr.emitting = true;
+        rb.velocity = Vector3.Slerp(transform.position ,dashDirection , 1) * dashSpeed;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
+        tr.emitting = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
