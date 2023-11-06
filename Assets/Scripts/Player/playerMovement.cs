@@ -8,13 +8,14 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed;
     public float dashSpeed;
     public float dashDuration;
+    public float speedSlowDown;
     public float dashCooldown;
-    private float moveX;
-    private float moveY;
     bool isDashing;
     bool canDash = true;
     public Vector3 dashTarget;
     public TrailRenderer tr;
+    public Animator anim;
+    Vector2 move;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,24 +30,38 @@ public class playerMovement : MonoBehaviour
             return;
         }
 
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
+        move.x = Input.GetAxisRaw("Horizontal");
+        move.y = Input.GetAxisRaw("Vertical");
 
-        playerMove(moveX, moveY);
+        playerMove(move.x, move.y);
 
         if (Input.GetMouseButton(1) && canDash)
         {
             StartCoroutine(playerDashing());
         }
+
+        anim.SetFloat("Horizontal", move.x);
+        anim.SetFloat("Vertical", move.y);
+        anim.SetFloat("Speed", move.sqrMagnitude);
+
     }
 
     void playerMove(float moveX, float moveY)
     {
-        rb.velocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
+        if(moveX !=0  && moveY !=0)
+        {
+            rb.velocity = new Vector2(moveX * moveSpeed * speedSlowDown, moveY * moveSpeed * speedSlowDown);
+        }
+        else
+        {
+            rb.velocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
+        }
+       
     }
 
     IEnumerator playerDashing()
     {
+        rb.velocity = Vector2.zero;
         dashTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         dashTarget.z = transform.position.z;
         Vector3 dashDirection = dashTarget - transform.position;
@@ -54,7 +69,7 @@ public class playerMovement : MonoBehaviour
         canDash = false;
         isDashing = true;
         tr.emitting = true;
-        rb.velocity = Vector3.Slerp(transform.position ,dashDirection , 1) * dashSpeed;
+        rb.AddForce(dashDirection * dashSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         tr.emitting = false;
