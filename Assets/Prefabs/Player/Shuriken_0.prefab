@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4a6e1b2322eb949ad1ab3d419bcd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed: 35
+  shootingSpeed: 50
   shootingDirection: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
 --- !u!95 &7963514134517345343
