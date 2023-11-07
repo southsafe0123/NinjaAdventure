@@ -3,39 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerCamTarget : MonoBehaviour
-{ 
+{
     public Transform target;
+    public Transform target2;
     public Vector3 _lockCam;
     public bool trigger;
     public float camspeed;
-    public bool istriggerPlayerIn;
     // Update is called once per frame
     private void Start()
     {
-        _lockCam = new Vector3(0, -8.69f, -10);
+        
     }
     void FixedUpdate()
     {
         lockCam();
 
         GameObject gameObject = GameObject.Find("player");
-        Transform player = gameObject.transform; 
+        Transform player = gameObject.transform;
 
         if (MapPointTriggerIn.triggerPlayerIn)
         {
-            transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
+            lockCamMap1(player);
             target = null;
-            istriggerPlayerIn = false; 
         }
-
-        if(MapPointTriggerIn.triggerPlayerIn == false && !istriggerPlayerIn)
+        else
         {
             target = player;
-            istriggerPlayerIn = true;
-            StartCoroutine(caigido());
+        }
+         
+        if (MapPointTriggerIn2.triggerPlayerIn)
+        {
+            lockCamMap2(player);
+            target = null;
+        }
+        else if (!MapPointTriggerIn2.triggerPlayerIn && target == null)
+        {
+            target2 = player;
         }
 
-        Debug.Log(MapPointTriggerIn.triggerPlayerIn);
+        if (MapPointTriggerIn3.triggerPlayerIn)
+        {
+            lockCamMap3(player);
+            target = null;
+            target2 = player;
+        }
+        else if (!MapPointTriggerIn3.triggerPlayerIn && target == null && target2 == null)
+        {
+            target2 = player;
+        }
+
     }
 
     void lockCam()
@@ -46,15 +62,26 @@ public class playerCamTarget : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, camspeed * Time.deltaTime);
 
             float clampedX = Mathf.Clamp(transform.position.x, 0, 0);
-            float clampedY = Mathf.Clamp(transform.position.y, -18.03f, 0);
+            float clampedY = Mathf.Clamp(transform.position.y, -25.49f, 0);
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }
 
-    IEnumerator caigido()
+    void lockCamMap1(Transform player)
     {
-        yield return new WaitForSeconds(0.5f);
-        _lockCam = new Vector3(0, -17.68f, -10);
-        yield return null;
+        _lockCam = MapPointTriggerIn._lockCam;
+        transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
+    }
+
+    void lockCamMap2(Transform player)
+    {
+        _lockCam = MapPointTriggerIn2._lockCam;
+        transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
+    }
+
+    void lockCamMap3(Transform player)
+    {
+        _lockCam = MapPointTriggerIn3._lockCam;
+        transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
     }
 }
