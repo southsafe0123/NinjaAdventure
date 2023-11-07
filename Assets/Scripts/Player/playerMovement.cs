@@ -19,7 +19,6 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dashTarget = transform.position;
     }
 
     // Update is called once per frame
@@ -33,7 +32,7 @@ public class playerMovement : MonoBehaviour
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
 
-        playerMove(move.x, move.y);
+        
 
         if (Input.GetMouseButton(1) && canDash)
         {
@@ -46,6 +45,15 @@ public class playerMovement : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            return;
+        }
+
+        playerMove(move.x, move.y);
+    }
     void playerMove(float moveX, float moveY)
     {
         if(moveX !=0  && moveY !=0)
@@ -63,17 +71,19 @@ public class playerMovement : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         dashTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dashTarget.z = transform.position.z;
-        Vector3 dashDirection = dashTarget - transform.position;
-        dashDirection.Normalize();
+        Vector2 dashDirection = dashTarget - transform.position;
+
         canDash = false;
         isDashing = true;
         tr.emitting = true;
-        rb.AddForce(dashDirection * dashSpeed, ForceMode2D.Impulse);
+
+        rb.AddForce((dashDirection).normalized * dashSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
+        
         isDashing = false;
         tr.emitting = false;
         yield return new WaitForSeconds(dashCooldown);
+        
         canDash = true;
     }
 }
