@@ -20,7 +20,7 @@ public class MapPointTriggerIn : MonoBehaviour
             _lockCam = new Vector3(0, -8.69f, -10);
         }
     }
-      
+       
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy") && !monsters.Contains(collision.transform))
