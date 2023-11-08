@@ -26,9 +26,18 @@ public class shurikenBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("wall") || collision.CompareTag("enemy")) {
-            isHitSth = true;
-            gameObject.tag = "GrShuriken";
-            anim.enabled = false;
+            StartCoroutine(changeBehavior());
+            
         }
+    }
+    
+    IEnumerator changeBehavior()
+    {
+        isHitSth = true;
+        anim.enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        gameObject.tag = "GrShuriken";
+        yield return null;
+        StopCoroutine(changeBehavior());
     }
 }

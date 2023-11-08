@@ -8,7 +8,9 @@ TagManager:
   - wall
   - GrShuriken
   - enemy
+  - Exp
   - inMap
+  - Monster
   layers:
   - Default
   - TransparentFX

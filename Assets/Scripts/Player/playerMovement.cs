@@ -16,10 +16,11 @@ public class playerMovement : MonoBehaviour
     public TrailRenderer tr;
     public Animator anim;
     Vector2 move;
+    private Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
-        dashTarget = transform.position;
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class playerMovement : MonoBehaviour
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
 
-        playerMove(move.x, move.y);
+        
 
         if (Input.GetMouseButton(1) && canDash)
         {
@@ -46,6 +47,15 @@ public class playerMovement : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            return;
+        }
+
+        playerMove(move.x, move.y);
+    }
     void playerMove(float moveX, float moveY)
     {
         if(moveX !=0  && moveY !=0)
@@ -62,26 +72,20 @@ public class playerMovement : MonoBehaviour
     IEnumerator playerDashing()
     {
         rb.velocity = Vector2.zero;
-        dashTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dashTarget.z = transform.position.z;
-        Vector3 dashDirection = dashTarget - transform.position;
-        dashDirection.Normalize();
+        dashTarget =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dashDirection = dashTarget - transform.position;
+
         canDash = false;
         isDashing = true;
         tr.emitting = true;
-        rb.AddForce(dashDirection * dashSpeed, ForceMode2D.Impulse);
+
+        rb.AddForce((dashDirection).normalized * dashSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
+        
         isDashing = false;
         tr.emitting = false;
         yield return new WaitForSeconds(dashCooldown);
+        
         canDash = true;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("enemy"))
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
