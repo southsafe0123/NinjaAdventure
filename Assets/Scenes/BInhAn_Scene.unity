@@ -281,6 +281,7 @@ MonoBehaviour:
   _lockCam: {x: 0, y: 0, z: 0}
   trigger: 0
   camspeed: 10
+  enableLoadscene: {fileID: 969028833}
 --- !u!1 &969028833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8526721849391890530, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
@@ -495,6 +496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2069007782684450660, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
+      propertyPath: enableLoadscene
+      value: 
+      objectReference: {fileID: 969028833}
     - target: {fileID: 8526721848691380579, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
       propertyPath: m_Alpha
       value: 0
@@ -505,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8526721849391890530, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8526721849391890533, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
       propertyPath: m_RootOrder

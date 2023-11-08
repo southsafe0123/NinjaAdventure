@@ -9,10 +9,11 @@ public class playerCamTarget : MonoBehaviour
     public Vector3 _lockCam;
     public bool trigger;
     public float camspeed;
+    public GameObject enableLoadscene;
     // Update is called once per frame
     private void Start()
     {
-        
+        enableLoadscene.SetActive(true);
     }
     void FixedUpdate()
     {

@@ -9,9 +9,9 @@ public class LoadScene : MonoBehaviour
     public Animator anim;
     public float loadTime = 3f;
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
