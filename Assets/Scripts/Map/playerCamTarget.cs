@@ -41,16 +41,16 @@ public class playerCamTarget : MonoBehaviour
             target2 = player;
         }
 
-        if (MapPointTriggerIn3.triggerPlayerIn)
-        {
-            lockCamMap3(player);
-            target = null;
-            target2 = player;
-        }
-        else if (!MapPointTriggerIn3.triggerPlayerIn && target == null && target2 == null)
-        {
-            target2 = player;
-        }
+        //if (MapPointTriggerIn3.triggerPlayerIn)
+        //{
+        //    lockCamMap3(player);
+        //    target = null;
+        //    target2 = player;
+        //}
+        //else if (!MapPointTriggerIn3.triggerPlayerIn && target == null && target2 == null)
+        //{
+        //    target2 = player;
+        //}
 
     }
 
@@ -79,9 +79,9 @@ public class playerCamTarget : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
     }
 
-    void lockCamMap3(Transform player)
-    {
-        _lockCam = MapPointTriggerIn3._lockCam;
-        transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
-    }
+    //void lockCamMap3(Transform player)
+    //{
+    //    _lockCam = MapPointTriggerIn3._lockCam;
+    //    transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
+    //}
 }
