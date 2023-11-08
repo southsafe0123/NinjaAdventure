@@ -62,7 +62,7 @@ public class playerCamTarget : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, camspeed * Time.deltaTime);
 
             float clampedX = Mathf.Clamp(transform.position.x, 0, 0);
-            float clampedY = Mathf.Clamp(transform.position.y, -25.49f, 0);
+            float clampedY = Mathf.Clamp(transform.position.y, -18.01f, 0);
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }
