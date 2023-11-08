@@ -11,7 +11,8 @@ public class playerMovement : MonoBehaviour
     public float speedSlowDown;
     public float dashCooldown;
     bool isDashing;
-    bool canDash = true;
+    public bool canDash = true;
+    private float timer;
     public Vector3 dashTarget;
     public TrailRenderer tr;
     public Animator anim;
@@ -26,17 +27,18 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDashing)
-        {
-            return;
-        }
+        if (!canDash) StartCoroutine(CooldownDash()); 
+
+
+        if (isDashing) return;
+        
 
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
 
-        
 
-        if (Input.GetMouseButton(1) && canDash)
+
+        if (Input.GetMouseButtonDown(1) && canDash)
         {
             StartCoroutine(playerDashing());
         }
@@ -58,7 +60,7 @@ public class playerMovement : MonoBehaviour
     }
     void playerMove(float moveX, float moveY)
     {
-        if(moveX !=0  && moveY !=0)
+        if (moveX != 0 && moveY != 0)
         {
             rb.velocity = new Vector2(moveX * moveSpeed * speedSlowDown, moveY * moveSpeed * speedSlowDown);
         }
@@ -66,13 +68,13 @@ public class playerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
         }
-       
+
     }
 
     IEnumerator playerDashing()
     {
         rb.velocity = Vector2.zero;
-        dashTarget =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        dashTarget = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dashDirection = dashTarget - transform.position;
 
         canDash = false;
@@ -81,11 +83,28 @@ public class playerMovement : MonoBehaviour
 
         rb.AddForce((dashDirection).normalized * dashSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
-        
+
         isDashing = false;
         tr.emitting = false;
-        yield return new WaitForSeconds(dashCooldown);
-        
+    }
+    IEnumerator CooldownDash()
+    {
+
+        timer += Time.deltaTime;
+        if (timer > dashCooldown)
+        {
+            timer = 0;
+            canDash = true;
+        }
+
+        yield return null;
+    }
+
+    public void resetCooldownDash()
+    {
+        StopCoroutine(CooldownDash());
+        timer = 0;
         canDash = true;
     }
+
 }

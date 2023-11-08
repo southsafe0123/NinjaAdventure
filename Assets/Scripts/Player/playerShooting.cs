@@ -7,10 +7,12 @@ public class playerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject shurikenBullet;
     [SerializeField] private Transform firingPoint;
+    public playerMovement player;
     bool isShooting;
     public Vector3 shootingPos;
     private Camera mainCamera;
     public float shurikenSpeed;
+    public float shurikenPLayerHave;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,17 @@ public class playerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (shurikenPLayerHave == 0)
+        {
+            isShooting = true;
+        }
+        else
+        {
+            isShooting = false;
+        }
 
         if (Input.GetMouseButtonDown(0) && !isShooting)
         {
-            isShooting = true;
             StartCoroutine(shoot());
         }
     } 
@@ -32,6 +40,8 @@ public class playerShooting : MonoBehaviour
     IEnumerator shoot() 
     {
         yield return null;
+
+        shurikenPLayerHave--;
 
         shootingPos = Input.mousePosition;
         shootingPos.z = 0;
@@ -49,8 +59,11 @@ public class playerShooting : MonoBehaviour
     {
         if (collision.CompareTag("GrShuriken"))
         {
-            Destroy(collision.gameObject);
+            
+            player.resetCooldownDash();
             isShooting = false;
+            shurikenPLayerHave++;
+            Destroy(collision.gameObject,0.03f);
         }
     }
 }

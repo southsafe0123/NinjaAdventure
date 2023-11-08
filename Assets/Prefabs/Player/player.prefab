@@ -94,8 +94,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shurikenBullet: {fileID: 3849358628221302641, guid: b3e3438a01435f640beeda140f2c728c, type: 3}
   firingPoint: {fileID: 1918582744833853434}
+  player: {fileID: 1918582745069552910}
   shootingPos: {x: 0, y: 0, z: 0}
   shurikenSpeed: 30
+  shurikenPLayerHave: 5
 --- !u!1 &1918582745069552911
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +378,8 @@ MonoBehaviour:
   dashSpeed: 40
   dashDuration: 0.07
   speedSlowDown: 0.75
-  dashCooldown: 0.1
+  dashCooldown: 5
+  canDash: 1
   dashTarget: {x: -3.7111611, y: -1.3669986, z: 0}
   tr: {fileID: 1918582745069552917}
   anim: {fileID: 1918582745069552916}
