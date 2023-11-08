@@ -41,7 +41,6 @@ public class PlayerStatus : MonoBehaviour
         if (collision.CompareTag("Exp"))
         { 
             s_Exp+=expPickUpVariable;
-            Destroy(collision.gameObject);
         }
     }
 }

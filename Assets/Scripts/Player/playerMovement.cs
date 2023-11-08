@@ -16,9 +16,11 @@ public class playerMovement : MonoBehaviour
     public TrailRenderer tr;
     public Animator anim;
     Vector2 move;
+    private Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -70,7 +72,7 @@ public class playerMovement : MonoBehaviour
     IEnumerator playerDashing()
     {
         rb.velocity = Vector2.zero;
-        dashTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dashTarget =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dashDirection = dashTarget - transform.position;
 
         canDash = false;
@@ -85,13 +87,5 @@ public class playerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         
         canDash = true;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("enemy"))
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
