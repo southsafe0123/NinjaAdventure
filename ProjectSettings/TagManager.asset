@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - Exp
   - inMap
+  - Monster
   layers:
   - Default
   - TransparentFX
