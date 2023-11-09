@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float currentHealth;
-    public float maxHealth;
+    public static float PlayerCurrentHealth;
+    public static float PlayerMaxHeath;
+    public float playerCurrentHealth;
+    public float playerMaxHeath;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     public static bool playerGotHit;
@@ -14,12 +16,18 @@ public class PlayerHealth : MonoBehaviour
     public float knockBackDuration;
     public float invisDuration;
     public static bool playerInvis;
+    public float freezeTimeDur;
+    private void Awake()
+    {
+        PlayerCurrentHealth = playerCurrentHealth;
+        PlayerMaxHeath = playerMaxHeath;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("enemy") && !playerInvis)
         {
-            currentHealth--;
+            PlayerCurrentHealth--;
             StartCoroutine(gotHitState(collision));
         }
     }
@@ -33,6 +41,11 @@ public class PlayerHealth : MonoBehaviour
     {
 
         knockBackState(collision);
+
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(freezeTimeDur);
+        Time.timeScale = 1;
+            
         yield return new WaitForSeconds(knockBackDuration);
         
         invisState();

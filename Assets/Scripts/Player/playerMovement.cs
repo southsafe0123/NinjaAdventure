@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashDuration;
     public float speedSlowDown;
-    public float dashCooldown;
-    bool isDashing;
+    public float dashCooldown; 
+    public bool isDashing;
     public bool canDash = true;
     private float timer;
     public Vector3 dashTarget;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetMouseButtonDown(1) && canDash)
+        if (Input.GetMouseButtonDown(1) && canDash && !isDashing && Time.timeScale!=0)
         {
             StartCoroutine(playerDashing());
         }
@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator playerDashing()
     {
+
         rb.velocity = Vector2.zero;
         dashTarget = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dashDirection = dashTarget - transform.position;

@@ -11,17 +11,20 @@ public class PlayerShooting : MonoBehaviour
     bool isShooting;
     public Vector3 shootingPos;
     public float shurikenSpeed;
-    public float shurikenPLayerHave;
+    public static float ShurikenPLayerHave;
+    public float shurikenPlayerHave;
+    public float hitStopDur;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ShurikenPLayerHave = shurikenPlayerHave;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shurikenPLayerHave == 0)
+        if (ShurikenPLayerHave == 0)
         {
             isShooting = true;
         }
@@ -40,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
     {
         yield return null;
 
-        shurikenPLayerHave--;
+        ShurikenPLayerHave--;
 
         shootingPos = Input.mousePosition;
         shootingPos.z = 0;
@@ -58,11 +61,18 @@ public class PlayerShooting : MonoBehaviour
     {
         if (collision.CompareTag("GrShuriken"))
         {
-            
+                StartCoroutine(HitStop());
             player.resetCooldownDash();
             isShooting = false;
-            shurikenPLayerHave++;
+            ShurikenPLayerHave++;
             Destroy(collision.gameObject,0.03f);
         }
+    }
+
+    IEnumerator HitStop()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(hitStopDur);
+        Time.timeScale = 1;
     }
 }

@@ -97,7 +97,8 @@ MonoBehaviour:
   player: {fileID: 1918582745069552910}
   shootingPos: {x: 0, y: 0, z: 0}
   shurikenSpeed: 30
-  shurikenPLayerHave: 1
+  shurikenPlayerHave: 5
+  hitStopDur: 0.1
 --- !u!1 &1918582745069552911
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,10 +378,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1918582745069552905}
   moveSpeed: 6
-  dashSpeed: 40
+  dashSpeed: 37
   dashDuration: 0.07
   speedSlowDown: 0.75
   dashCooldown: 2
+  isDashing: 0
   canDash: 1
   dashTarget: {x: -3.7111611, y: -1.3669986, z: 0}
   tr: {fileID: 1918582745069552917}
@@ -413,11 +415,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b556dac9bddc545b846103fa154035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  playerCurrentHealth: 5
+  playerMaxHeath: 5
   knockBackForce: 500
   knockBackDuration: 0.1
   invisDuration: 1.2
+  freezeTimeDur: 0.065
 --- !u!114 &146434670
 MonoBehaviour:
   m_ObjectHideFlags: 0

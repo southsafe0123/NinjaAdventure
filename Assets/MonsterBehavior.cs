@@ -14,6 +14,7 @@ public class MonsterBehavior : MonoBehaviour
     public float knockBackDuration;
     public float hitLagWait;
     private Animator anim;
+    public float hitLagDur;
 
     private void Start()
     {
@@ -45,7 +46,13 @@ public class MonsterBehavior : MonoBehaviour
 
     private IEnumerator startBehaviorHit(Collider2D collision)
     {
+
+
         knockBackState(collision);
+
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(hitLagDur);
+        Time.timeScale = 1;
         
         yield return new WaitForSeconds(knockBackDuration);
         alertState();

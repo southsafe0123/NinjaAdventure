@@ -236,6 +236,7 @@ MonoBehaviour:
   knockBackForce: 500
   knockBackDuration: 0.1
   hitLagWait: 0.3
+  hitLagDur: 0.07
 --- !u!95 &405813625
 Animator:
   serializedVersion: 5
