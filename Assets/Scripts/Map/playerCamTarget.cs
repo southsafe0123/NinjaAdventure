@@ -9,10 +9,11 @@ public class playerCamTarget : MonoBehaviour
     public Vector3 _lockCam;
     public bool trigger;
     public float camspeed;
+    public GameObject enableLoadscene;
     // Update is called once per frame
     private void Start()
     {
-        
+        enableLoadscene.SetActive(true);
     }
     void FixedUpdate()
     {
@@ -41,16 +42,16 @@ public class playerCamTarget : MonoBehaviour
             target2 = player;
         }
 
-        if (MapPointTriggerIn3.triggerPlayerIn)
-        {
-            lockCamMap3(player);
-            target = null;
-            target2 = player;
-        }
-        else if (!MapPointTriggerIn3.triggerPlayerIn && target == null && target2 == null)
-        {
-            target2 = player;
-        }
+        //if (MapPointTriggerIn3.triggerPlayerIn)
+        //{
+        //    lockCamMap3(player);
+        //    target = null;
+        //    target2 = player;
+        //}
+        //else if (!MapPointTriggerIn3.triggerPlayerIn && target == null && target2 == null)
+        //{
+        //    target2 = player;
+        //}
 
     }
 
@@ -62,7 +63,7 @@ public class playerCamTarget : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, camspeed * Time.deltaTime);
 
             float clampedX = Mathf.Clamp(transform.position.x, 0, 0);
-            float clampedY = Mathf.Clamp(transform.position.y, -25.49f, 0);
+            float clampedY = Mathf.Clamp(transform.position.y, -18.01f, 0);
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }
@@ -79,9 +80,9 @@ public class playerCamTarget : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
     }
 
-    void lockCamMap3(Transform player)
-    {
-        _lockCam = MapPointTriggerIn3._lockCam;
-        transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
-    }
+    //void lockCamMap3(Transform player)
+    //{
+    //    _lockCam = MapPointTriggerIn3._lockCam;
+    //    transform.position = Vector3.Lerp(transform.position, _lockCam, 0.05f);
+    //}
 }

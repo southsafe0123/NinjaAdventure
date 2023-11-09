@@ -8,6 +8,7 @@ public class MapPointTriggerIn2 : MonoBehaviour
     public List<Transform> monsters = new List<Transform>();
     public GameObject wall1;
     public GameObject wall2;
+    public GameObject fightZone;
     public static Vector3 _lockCam;
 
 
@@ -38,7 +39,7 @@ public class MapPointTriggerIn2 : MonoBehaviour
             if (monsters.Count == 0)
             {
                 triggerPlayerIn = false;
-                wall2.SetActive(false);
+                fightZone.SetActive(false);
             }
         }
     }
