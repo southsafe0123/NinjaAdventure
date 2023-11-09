@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MapPointTriggerIn2 : MonoBehaviour
 {
+
     public static bool triggerPlayerIn;
     public List<Transform> monsters = new List<Transform>();
     public GameObject wall1;
     public GameObject wall2;
     public GameObject fightZone;
-    public static Vector3 _lockCam;
-
+    public static Vector3 _lockCam; 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,18 +29,23 @@ public class MapPointTriggerIn2 : MonoBehaviour
         {
             monsters.Add(collision.transform);
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("enemy"))
+        for (int i = 0; i < monsters.Count; i++)
         {
-            monsters.Remove(collision.transform);
-            if (monsters.Count == 0)
+            if (monsters[i] != null) continue;
+
+            if (monsters[i] == null)
             {
-                triggerPlayerIn = false;
-                fightZone.SetActive(false);
+                monsters.RemoveAt(i);
+                break;
             }
         }
+
+        if (monsters.Count == 0)
+        {
+            triggerPlayerIn = false;
+            fightZone.SetActive(false);
+        }
+
     }
 }

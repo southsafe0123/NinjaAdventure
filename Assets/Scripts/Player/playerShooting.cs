@@ -3,20 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerShooting : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject shurikenBullet;
     [SerializeField] private Transform firingPoint;
-    public playerMovement player;
+    public PlayerMovement player;
     bool isShooting;
     public Vector3 shootingPos;
-    private Camera mainCamera;
     public float shurikenSpeed;
     public float shurikenPLayerHave;
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        
     }
 
     // Update is called once per frame
@@ -46,7 +45,7 @@ public class playerShooting : MonoBehaviour
         shootingPos = Input.mousePosition;
         shootingPos.z = 0;
 
-        shootingPos = mainCamera.ScreenToWorldPoint(shootingPos);
+        shootingPos = PlayerMovement.mainCamera.ScreenToWorldPoint(shootingPos);
 
         shootingPos = shootingPos - transform.position;
 

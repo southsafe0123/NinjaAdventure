@@ -6,7 +6,8 @@ public class shurikenBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     bool isHitSth = false;
-    public Animator anim;
+    private Animator anim;
+    public GameObject arrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class shurikenBullet : MonoBehaviour
         anim.enabled = false;
         yield return new WaitForSeconds(0.05f);
         gameObject.tag = "GrShuriken";
+        arrow.SetActive(true);
         yield return null;
         StopCoroutine(changeBehavior());
     }

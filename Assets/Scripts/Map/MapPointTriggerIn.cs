@@ -11,6 +11,10 @@ public class MapPointTriggerIn : MonoBehaviour
     public GameObject fightZone;
     public static Vector3 _lockCam;
 
+    private void Start()
+    {
+        gameObject.SetActive(true);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -21,25 +25,30 @@ public class MapPointTriggerIn : MonoBehaviour
             _lockCam = new Vector3(0, -8.69f, -10);
         }
     }
-       
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy") && !monsters.Contains(collision.transform))
         {
             monsters.Add(collision.transform);
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("enemy"))
+        for (int i = 0; i < monsters.Count; i++)
         {
-            monsters.Remove(collision.transform);
-            if (monsters.Count == 0)
+            if (monsters[i] != null) continue;
+
+            if (monsters[i] == null)
             {
-                triggerPlayerIn = false;
-                fightZone.SetActive(false);
+                monsters.RemoveAt(i);
+                break;
             }
         }
+
+        if (monsters.Count == 0)
+        {
+            triggerPlayerIn = false;
+            fightZone.SetActive(false);
+        }
+
     }
 }

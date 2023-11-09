@@ -15,7 +15,7 @@ public class TriggerArea : MonoBehaviour
 
     private void Awake()
     {
-        _player = FindObjectOfType<playerMovement>().transform;
+        _player = FindObjectOfType<PlayerMovement>().transform;
     }
 
     // Update is called once per frame

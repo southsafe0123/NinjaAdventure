@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed;
@@ -17,12 +17,8 @@ public class playerMovement : MonoBehaviour
     public TrailRenderer tr;
     public Animator anim;
     Vector2 move;
-    private Camera mainCamera;
+    public static Camera mainCamera;
     // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +26,7 @@ public class playerMovement : MonoBehaviour
         if (!canDash) StartCoroutine(CooldownDash()); 
 
 
-        if (isDashing) return;
+        if (isDashing||PlayerHealth.playerGotHit) return;
         
 
         move.x = Input.GetAxisRaw("Horizontal");
@@ -51,7 +47,7 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing)
+        if (isDashing||PlayerHealth.playerGotHit)
         {
             return;
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCamTarget : MonoBehaviour
+public class PlayerCamTarget : MonoBehaviour
 {
     public Transform target;
     public Transform target2;
@@ -13,6 +13,8 @@ public class playerCamTarget : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
+        PlayerMovement.mainCamera = Camera.main;
+        target = GameObject.Find("player").transform;
         enableLoadscene.SetActive(true);
     }
     void FixedUpdate()
