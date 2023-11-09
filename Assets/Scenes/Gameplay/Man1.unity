@@ -184,11 +184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1cfd835ec85e034c8728d48aebb0513, type: 3}
---- !u!1 &4423809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1918582745069552911, guid: c1cfd835ec85e034c8728d48aebb0513, type: 3}
-  m_PrefabInstance: {fileID: 4423808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &119763945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8526721849391890530, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
@@ -303,10 +298,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1253349438, guid: 43a812657417c5b41ac21b1489baea91, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 4423809}
     - target: {fileID: 5335841985226346362, guid: 43a812657417c5b41ac21b1489baea91, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -354,10 +345,6 @@ PrefabInstance:
     - target: {fileID: 5335841985226346363, guid: 43a812657417c5b41ac21b1489baea91, type: 3}
       propertyPath: m_Name
       value: Maping1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7761409689101854341, guid: 43a812657417c5b41ac21b1489baea91, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43a812657417c5b41ac21b1489baea91, type: 3}

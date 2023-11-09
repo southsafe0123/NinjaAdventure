@@ -13,7 +13,7 @@ public class MapPointTriggerIn : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(true);
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +22,7 @@ public class MapPointTriggerIn : MonoBehaviour
             triggerPlayerIn = true;
             wall1.SetActive(true);
             wall2.SetActive(true);
-            _lockCam = new Vector3(0, -8.69f, -10);
+            _lockCam = new Vector3(transform.position.x, transform.position.y, -10);
         }
     }
 
@@ -48,6 +48,10 @@ public class MapPointTriggerIn : MonoBehaviour
         {
             triggerPlayerIn = false;
             fightZone.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
         }
 
     }

@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamTarget : MonoBehaviour
+public class HorizontalCamera : MonoBehaviour
 {
     public Transform target;
     public Transform target2;
@@ -33,7 +33,7 @@ public class PlayerCamTarget : MonoBehaviour
         {
             target = player;
         }
-         
+
         if (MapPointTriggerIn2.triggerPlayerIn)
         {
             lockCamMap2(player);
@@ -64,8 +64,8 @@ public class PlayerCamTarget : MonoBehaviour
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, camspeed * Time.deltaTime);
 
-            float clampedX = Mathf.Clamp(transform.position.x, 0, 0);
-            float clampedY = Mathf.Clamp(transform.position.y, -18.01f, 0);
+            float clampedX =  Mathf.Clamp(transform.position.x, 0, 35f);
+            float clampedY = Mathf.Clamp(transform.position.y, 0, 0);
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }

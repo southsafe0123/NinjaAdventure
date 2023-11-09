@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 196375921643332816}
   - component: {fileID: 196375921643332817}
   - component: {fileID: 196375921643332831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ActiveRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 196375921922003336}
   - component: {fileID: 405813625}
   - component: {fileID: 4392556485511028673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime
   m_TagString: enemy
   m_Icon: {fileID: 0}
