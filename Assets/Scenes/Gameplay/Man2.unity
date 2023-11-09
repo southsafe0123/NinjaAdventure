@@ -218,11 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1918582745069552907, guid: c1cfd835ec85e034c8728d48aebb0513, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.22
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 1918582745069552907, guid: c1cfd835ec85e034c8728d48aebb0513, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.42
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 1918582745069552907, guid: c1cfd835ec85e034c8728d48aebb0513, type: 3}
       propertyPath: m_LocalPosition.z
@@ -371,18 +371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 171309410386269055, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5502167
-      objectReference: {fileID: 0}
-    - target: {fileID: 171309410386269055, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.27510834
-      objectReference: {fileID: 0}
-    - target: {fileID: 171309410386269055, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.36000013
-      objectReference: {fileID: 0}
     - target: {fileID: 5134765099203515448, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
       propertyPath: m_Name
       value: Maping2
@@ -429,14 +417,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5134765099203515449, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151394116944163614, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151394117927729333, guid: 1752260a6fac60f4b870c0af4695e733, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

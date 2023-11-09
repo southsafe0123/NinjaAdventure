@@ -380,7 +380,7 @@ MonoBehaviour:
   dashSpeed: 40
   dashDuration: 0.07
   speedSlowDown: 0.75
-  dashCooldown: 5
+  dashCooldown: 2
   canDash: 1
   dashTarget: {x: -3.7111611, y: -1.3669986, z: 0}
   tr: {fileID: 1918582745069552917}
