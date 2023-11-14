@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
@@ -13,7 +14,6 @@ public class PlayerShooting : MonoBehaviour
     public float shurikenSpeed;
     public static float ShurikenPLayerHave;
     public float shurikenPlayerHave;
-    public float hitStopDur;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
             isShooting = false;
         }
 
-        if (Input.GetMouseButtonDown(0) && !isShooting)
+        if (Input.GetMouseButtonDown(0) && !isShooting && Time.timeScale == 1)
         {
             StartCoroutine(shoot());
         }
@@ -61,18 +61,13 @@ public class PlayerShooting : MonoBehaviour
     {
         if (collision.CompareTag("GrShuriken"))
         {
-                StartCoroutine(HitStop());
-            player.resetCooldownDash();
+            if (player.timer != 0)
+            {
+                player.resetCooldownDash();
+            }
             isShooting = false;
             ShurikenPLayerHave++;
             Destroy(collision.gameObject,0.03f);
         }
-    }
-
-    IEnumerator HitStop()
-    {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(hitStopDur);
-        Time.timeScale = 1;
     }
 }

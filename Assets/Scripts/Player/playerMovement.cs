@@ -12,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown; 
     public bool isDashing;
     public bool canDash = true;
-    private float timer;
+    public float timer;
     public Vector3 dashTarget;
     public TrailRenderer tr;
     public Animator anim;
     Vector2 move;
     public static Camera mainCamera;
+    public float hitStopDur;
+
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canDash) StartCoroutine(CooldownDash()); 
 
 
-        if (isDashing||PlayerHealth.playerGotHit) return;
+        if (isDashing||PlayerHealth.playerGotHit || Time.timeScale == 0) return;
         
 
         move.x = Input.GetAxisRaw("Horizontal");
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetMouseButtonDown(1) && canDash && !isDashing && Time.timeScale!=0)
+        if (Input.GetMouseButtonDown(1) && canDash && !isDashing)
         {
             StartCoroutine(playerDashing());
         }
@@ -100,9 +102,18 @@ public class PlayerMovement : MonoBehaviour
     public void resetCooldownDash()
     {
         StopCoroutine(CooldownDash());
+        StartCoroutine(HitStop());
         timer = 0;
         canDash = true;
     }
 
+     
+    //stop moment when player get shuriken
+    IEnumerator HitStop()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(hitStopDur);
+        Time.timeScale = 1;
+    }
 
 }

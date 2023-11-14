@@ -8,13 +8,19 @@ public class PlayerStatus : MonoBehaviour
     public float expRequire;
     public float nextLevelExpRequire;
     public float expPickUpVariable;
-    private static float s_Exp=0;
 
+    public static float s_expPickUpVariable;
+    public static float s_Exp = 0;
+    public static float s_level;
+    public static float s_oldLevel;
 
-
-    // Start is called before the first frame update
-
-    // Update is called once per frame
+    private void Start()
+    {
+        //cho chỉ số chỉnh được vào static
+        s_oldLevel = level;
+        s_level = level;
+        s_expPickUpVariable = expPickUpVariable;
+    }
     void Update()
     {
         checkLevel();
@@ -24,19 +30,30 @@ public class PlayerStatus : MonoBehaviour
     {
         if (s_Exp >= expRequire)
         {
-            level++;
+            s_level++;
             s_Exp = 0;
-            expRequire += nextLevelExpRequire; 
+            expRequire += nextLevelExpRequire;
+            expUpdate();
 
-            //TODO: hiện thông báo level up
             Debug.Log("LevelUp");
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public static bool IsLevelUp()
     {
-        if (collision.CompareTag("Exp"))
-        { 
-            s_Exp+=expPickUpVariable;
+        if (s_oldLevel != s_level)
+        {
+            return true;
         }
+
+        return false;
+    }
+
+    public static void UpdateCheckLevel()
+    {
+        s_oldLevel = s_level;
+    }
+    public static void expUpdate()
+    {
+        s_Exp += s_expPickUpVariable;
     }
 }

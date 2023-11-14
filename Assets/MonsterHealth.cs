@@ -6,30 +6,37 @@ public class MonsterHealth : MonoBehaviour
 {
     public float health;
     public MonsterBehavior monster;
+    public GameObject prefExp;
+    private bool lockDead;
+    public float shurikenDamage;
+    public static float s_shurikenDamage;
 
     private void Start()
     {
+        s_shurikenDamage = shurikenDamage;
         monster = GetComponent<MonsterBehavior>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("shuriken"))
         {
-            health--;
+            GetDamage(s_shurikenDamage);
         }
     }
 
     private void Update()
     {
-        if(health <= 0)
+        if(health <= 0&&!lockDead)
         {
-            StartCoroutine(deadState());
+            lockDead = true;
+            Instantiate(prefExp,transform.position, Quaternion.identity);
+            Destroy(gameObject, monster.knockBackDuration);
+            
         }
     }
-
-    IEnumerator deadState()
+    
+    void GetDamage(float damage)
     {
-        yield return null;
-        Destroy(gameObject,monster.knockBackDuration);
+        health -= damage;
     }
 }
