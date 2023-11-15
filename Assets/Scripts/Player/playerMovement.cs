@@ -23,11 +23,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canDash) StartCoroutine(CooldownDash()); 
+        if (!canDash) StartCoroutine(CooldownDash());
 
 
-        if (isDashing||PlayerHealth.playerGotHit) return;
-        
+        if (isDashing || PlayerHealth.playerGotHit) return;
+
 
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing||PlayerHealth.playerGotHit)
+        if (isDashing || PlayerHealth.playerGotHit)
         {
             return;
         }
