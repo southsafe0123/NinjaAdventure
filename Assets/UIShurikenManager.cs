@@ -10,10 +10,11 @@ public class UIShurikenManager : MonoBehaviour
     public GameObject shurikenPos;
     private float shurikenTemp;
     private Vector2 shurikenPosTemp;
-    public float nextHeartPosX;
+    public float nextShuriPosX;
     // Start is called before the first frame update
     void Start()
     {
+        shurikenPosTemp = new Vector2(0, 0);
         shurikenTemp = PlayerShooting.ShurikenPLayerHave;
         updateShurikenUI();
     }
@@ -48,7 +49,7 @@ public class UIShurikenManager : MonoBehaviour
         {
             Destroy(objShurikenList[i]);
         }
-
+        shurikenPosTemp.x = 0;
         objShurikenList.Clear();
     }
 
@@ -56,12 +57,11 @@ public class UIShurikenManager : MonoBehaviour
     {
         for (int i = 0; i < PlayerShooting.ShurikenPLayerHave; i++)
         {
-            var obj = Instantiate(prefShuriken, Vector3.zero, Quaternion.identity);
+            var obj = Instantiate(prefShuriken, shurikenPos.transform.position, Quaternion.identity);
             obj.transform.SetParent(shurikenPos.transform, false);
             obj.transform.localPosition = shurikenPosTemp;
-            shurikenPosTemp.x += nextHeartPosX;
+            shurikenPosTemp.x += nextShuriPosX;
         }
 
-        shurikenPosTemp.x = shurikenPos.transform.position.x;
     }
 }

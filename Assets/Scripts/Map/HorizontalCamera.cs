@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(CameraLoadData))]
 public class HorizontalCamera : MonoBehaviour
 {
     public Transform target;

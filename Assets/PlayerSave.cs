@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
+
+    public static 
     void Awake()
     {
         if (instance != null)

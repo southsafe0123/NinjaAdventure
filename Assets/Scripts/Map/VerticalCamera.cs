@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(CameraLoadData))]
 public class VerticalCamera : MonoBehaviour
 {
     public Transform target;
@@ -13,7 +13,6 @@ public class VerticalCamera : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        PlayerMovement.mainCamera = gameObject.GetComponent<Camera>();
         target = GameObject.Find("player").transform;
         enableLoadscene.SetActive(true);
     }

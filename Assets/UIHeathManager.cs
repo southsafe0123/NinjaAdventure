@@ -16,7 +16,7 @@ public class UIHeathManager : MonoBehaviour
     void Start()
     {
         maxHeathTemp = PlayerHealth.PlayerMaxHeath;
-        heartPosTemp = heartPos.transform.position;
+        heartPosTemp = new Vector2(0,0);
         currentHeathTemp = PlayerHealth.PlayerCurrentHealth;
         updateHeathUI();
     }
@@ -72,6 +72,7 @@ public class UIHeathManager : MonoBehaviour
             Destroy(objHeathList[i]);
         }
 
+        heartPosTemp.x = 0;
         objHeathList.Clear();
     }
 
@@ -79,12 +80,10 @@ public class UIHeathManager : MonoBehaviour
     {
         for (int i = 0; i < PlayerHealth.PlayerMaxHeath; i++)
         {
-            var obj = Instantiate(prefHeart, Vector3.zero, Quaternion.identity);
-            obj.transform.SetParent(heartPos.transform, false);
+            var obj = Instantiate(prefHeart, heartPos.transform.position, Quaternion.identity);
+            obj.transform.SetParent(heartPos.transform,false);
             obj.transform.localPosition = heartPosTemp;
             heartPosTemp.x += nextHeartPosX;
         }
-
-        heartPosTemp.x = heartPos.transform.position.x;
     }
 }
