@@ -7,7 +7,7 @@ public class DashCooldown : MonoBehaviour
 {
     public Slider slider;
     public GameObject dashBar;
-    public PlayerMovement player;
+    public playerMovement player;
     private void Start()
     {
     }

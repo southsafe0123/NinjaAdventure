@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class playerShooting : MonoBehaviour
 {
     [SerializeField] private GameObject shurikenBullet;
     [SerializeField] private Transform firingPoint;
-    public PlayerMovement player;
+    public playerMovement player;
     bool isShooting;
     public Vector3 shootingPos;
     public float shurikenSpeed;
@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
         shootingPos = Input.mousePosition;
         shootingPos.z = 0;
 
-        shootingPos = PlayerMovement.mainCamera.ScreenToWorldPoint(shootingPos);
+        shootingPos = playerMovement.mainCamera.ScreenToWorldPoint(shootingPos);
 
         shootingPos = shootingPos - transform.position;
 

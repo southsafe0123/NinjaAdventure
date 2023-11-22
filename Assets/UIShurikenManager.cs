@@ -15,16 +15,16 @@ public class UIShurikenManager : MonoBehaviour
     void Start()
     {
         shurikenPosTemp = new Vector2(0, 0);
-        shurikenTemp = PlayerShooting.ShurikenPLayerHave;
+        shurikenTemp = playerShooting.ShurikenPLayerHave;
         updateShurikenUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(shurikenTemp != PlayerShooting.ShurikenPLayerHave)
+        if(shurikenTemp != playerShooting.ShurikenPLayerHave)
         {
-            shurikenTemp = PlayerShooting.ShurikenPLayerHave;
+            shurikenTemp = playerShooting.ShurikenPLayerHave;
             GetObjShurikenList();
             clearShurikenUI();
             updateShurikenUI();
@@ -55,7 +55,7 @@ public class UIShurikenManager : MonoBehaviour
 
     private void updateShurikenUI()
     {
-        for (int i = 0; i < PlayerShooting.ShurikenPLayerHave; i++)
+        for (int i = 0; i < playerShooting.ShurikenPLayerHave; i++)
         {
             var obj = Instantiate(prefShuriken, shurikenPos.transform.position, Quaternion.identity);
             obj.transform.SetParent(shurikenPos.transform, false);

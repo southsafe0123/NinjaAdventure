@@ -10,7 +10,7 @@ public class CameraLoadData : MonoBehaviour
         Canvas canvas = GameObject.Find("UIPlayer").GetComponent<Canvas>();
         Camera cam = gameObject.GetComponent<Camera>();
         canvas.worldCamera = cam;
-        PlayerMovement.mainCamera = gameObject.GetComponent<Camera>();
+        playerMovement.mainCamera = gameObject.GetComponent<Camera>();
     }
 
 

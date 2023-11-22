@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Exp : MonoBehaviour
+public class exp : MonoBehaviour
 {
     public ParticleSystem psCollide;
     private void Start()

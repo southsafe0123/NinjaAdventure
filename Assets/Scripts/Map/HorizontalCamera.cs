@@ -13,7 +13,7 @@ public class HorizontalCamera : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        PlayerMovement.mainCamera = Camera.main;
+        playerMovement.mainCamera = Camera.main;
         target = GameObject.Find("player").transform;
         enableLoadscene.SetActive(true);
     }

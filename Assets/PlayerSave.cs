@@ -19,7 +19,7 @@ public class PlayerSave : MonoBehaviour
 
     public void addShuriken()
     {
-        PlayerShooting.ShurikenPLayerHave++;
+        playerShooting.ShurikenPLayerHave++;
     }
 
     public void addHealth()
