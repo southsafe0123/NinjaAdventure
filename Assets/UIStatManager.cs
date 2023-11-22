@@ -16,17 +16,17 @@ public class UIStatManager : MonoBehaviour
 
     public void ChooseShuriPlus()
     {
-        PlayerShooting.ShurikenPLayerHave++;
+        PlayerSave.instance.addShuriken();
         deActiveObj();
     }
     public void ChooseShuriDmg()
     {
-        MonsterHealth.s_shurikenDamage++;
+        PlayerSave.instance.addDamage();
         deActiveObj();
     }
     public void ChooseHealthPlus()
     {
-        PlayerHealth.PlayerMaxHeath++;
+        PlayerSave.instance.addHealth();
         deActiveObj();
     }
 

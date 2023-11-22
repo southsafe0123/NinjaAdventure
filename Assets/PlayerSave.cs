@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
-
-    public static 
     void Awake()
     {
         if (instance != null)
@@ -19,4 +17,19 @@ public class PlayerSave : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void addShuriken()
+    {
+        PlayerShooting.ShurikenPLayerHave++;
+    }
+
+    public void addHealth()
+    {
+        PlayerHealth.PlayerCurrentHealth++;
+        PlayerHealth.PlayerMaxHeath++;
+    }
+
+    public void addDamage()
+    {
+        MonsterHealth.s_shurikenDamage++;
+    }
 }

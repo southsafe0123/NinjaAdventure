@@ -35,6 +35,9 @@ public class UIHeathManager : MonoBehaviour
         if (currentHeathTemp != PlayerHealth.PlayerCurrentHealth)
         {
             currentHeathTemp = PlayerHealth.PlayerCurrentHealth;
+            GetObjHeathList();
+            clearHeathUI();
+            updateHeathUI();
             lostHeathUI();
         }
     } 
@@ -44,10 +47,9 @@ public class UIHeathManager : MonoBehaviour
         //lấy danh sách
         GetObjHeathList();
         //for và chạy animator mất máu
-
-        for (int i = 0; i < objHeathList.Count; i++)
+        for (int i = objHeathList.Count; i >0 ; i--)
         {
-            if (i > PlayerHealth.PlayerCurrentHealth-1)
+            if (i > PlayerHealth.PlayerCurrentHealth)
             {
                 objHeathList[i].transform.GetChild(0).GetComponent<Animator>().Play("HeathLost");
             }

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float dashSpeed;
     public float dashDuration;
-    public float speedSlowDown;
+    public float speedSlowDown; 
     public float dashCooldown; 
     public bool isDashing;
     public bool canDash = true;
