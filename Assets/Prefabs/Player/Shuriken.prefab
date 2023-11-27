@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 6710598009651966143}
+  shurikenDamage: 1
 --- !u!95 &7963514134517345343
 Animator:
   serializedVersion: 5

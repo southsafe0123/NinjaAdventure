@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterHealth : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
     public float health;
-    public MonsterBehavior monster;
     public GameObject prefExp;
     private bool lockDead;
 
     private void Start()
     {
-        monster = GetComponent<MonsterBehavior>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,18 +20,11 @@ public class MonsterHealth : MonoBehaviour
     }
     private void Update()
     {
-        if (health <= 0&&!lockDead)
-        {
-            lockDead = true;
-            Instantiate(prefExp,transform.position, Quaternion.identity);
-            Destroy(gameObject, monster.knockBackDuration);
-            
-        }
+
     }
-    
+
     void GetDamage(float damage)
     {
-
         health -= damage;
     }
 }

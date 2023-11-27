@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
+    public static bool isNewPlay;
     void Awake()
     {
         if (instance != null)
@@ -15,6 +17,25 @@ public class PlayerSave : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        Application.targetFrameRate = 60;
+
+        PlayerLoadData();
+    }
+
+    private void PlayerLoadData()
+    {
+        if (isNewPlay)
+        {
+            playerShooting.ShurikenPLayerHave = 1;
+            PlayerHealth.PlayerCurrentHealth = 2;
+            PlayerHealth.PlayerMaxHeath=2;
+            shurikenBullet.s_shurikenDamage=1;
+        }
+        else
+        {
+            //take data from api
+        }
     }
 
     public void addShuriken()
@@ -30,6 +51,6 @@ public class PlayerSave : MonoBehaviour
 
     public void addDamage()
     {
-        MonsterHealth.s_shurikenDamage++;
+        shurikenBullet.s_shurikenDamage++;
     }
 }

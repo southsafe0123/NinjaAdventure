@@ -306,7 +306,7 @@ MonoBehaviour:
   target2: {fileID: 0}
   _lockCam: {x: 0, y: 0, z: 0}
   trigger: 0
-  camspeed: 10
+  camspeed: 5
   enableLoadscene: {fileID: 78274410}
 --- !u!20 &519420031
 Camera:
