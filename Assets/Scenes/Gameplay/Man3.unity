@@ -5734,6 +5734,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.02
       objectReference: {fileID: 0}
+    - target: {fileID: 3258609623449483498, guid: a455b2fdce147ae44a68d46aff362387, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4479916233507716350, guid: a455b2fdce147ae44a68d46aff362387, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.99
@@ -6355,21 +6359,17 @@ PrefabInstance:
       propertyPath: bossUI
       value: 
       objectReference: {fileID: 1031746252}
-    - target: {fileID: 916282101139222062, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 916282101139222225, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 916282101139222225, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.02
+      value: 24.81
       objectReference: {fileID: 0}
     - target: {fileID: 916282101139222225, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 916282101139222225, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: m_LocalPosition.z

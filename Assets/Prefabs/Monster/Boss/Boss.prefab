@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 916282101139222062}
   - component: {fileID: 916282101139222060}
   - component: {fileID: 916282101139222063}
-  - component: {fileID: 916282101139222057}
+  - component: {fileID: 1262285433}
   m_Layer: 8
   m_Name: Boss
   m_TagString: enemy
@@ -182,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4723107735738678597, guid: 26b3afd9e115eec41b74c681f519004d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d26f4e607fb1143b7c56fb65398468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 5
   health: 50
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}
   isInCooldownState: 0
@@ -353,8 +353,8 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!58 &916282101139222057
-CircleCollider2D:
+--- !u!61 &1262285433
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -366,6 +366,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02239261, y: 0.15927152}
+  m_Offset: {x: 0.0017142296, y: 0.026124686}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 2.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.74140495
+  m_Size: {x: 1.8690102, y: 1.1842537}
+  m_EdgeRadius: 0

@@ -181,7 +181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 127761303507571002, guid: 15be103950caa5d4a9df994892c16e77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -272,4 +272,3 @@ MonoBehaviour:
   health: 2
   monster: {fileID: 196375921922003336}
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}
-  shurikenDamage: 1
