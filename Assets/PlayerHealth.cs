@@ -17,11 +17,6 @@ public class PlayerHealth : MonoBehaviour
     public float invisDuration;
     public static bool playerInvis;
     public float freezeTimeDur;
-    private void Awake()
-    {
-        PlayerCurrentHealth = playerCurrentHealth;
-        PlayerMaxHeath = playerMaxHeath;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,7 +30,10 @@ public class PlayerHealth : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        
+        PlayerCurrentHealth = playerCurrentHealth;
+        Debug.Log("starting");
+        PlayerMaxHeath = playerMaxHeath;
+
     }
     IEnumerator gotHitState(Collision2D collision)
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIHeathManager : MonoBehaviour
 {
-    private List<GameObject> objHeathList;
+    public List<GameObject> objHeathList;
     public GameObject prefHeart;
     public GameObject heartPos;
     private Vector2 heartPosTemp;
@@ -19,6 +19,7 @@ public class UIHeathManager : MonoBehaviour
         heartPosTemp = new Vector2(0,0);
         currentHeathTemp = PlayerHealth.PlayerCurrentHealth;
         updateHeathUI();
+        lostHeathUI();
     }
 
     // Update is called once per frame
@@ -35,9 +36,6 @@ public class UIHeathManager : MonoBehaviour
         if (currentHeathTemp != PlayerHealth.PlayerCurrentHealth)
         {
             currentHeathTemp = PlayerHealth.PlayerCurrentHealth;
-            GetObjHeathList();
-            clearHeathUI();
-            updateHeathUI();
             lostHeathUI();
         }
     } 
@@ -46,14 +44,21 @@ public class UIHeathManager : MonoBehaviour
     {
         //lấy danh sách
         GetObjHeathList();
+        float lostHealth = PlayerHealth.PlayerMaxHeath - PlayerHealth.PlayerCurrentHealth;
         //for và chạy animator mất máu
-        for (int i = objHeathList.Count; i >0 ; i--)
+        for(int i = objHeathList.Count-1; i >= 0; i--)
         {
-            if (i > PlayerHealth.PlayerCurrentHealth)
+            if(lostHealth == 0)
+            {
+                break;
+            }
+            else
             {
                 objHeathList[i].transform.GetChild(0).GetComponent<Animator>().Play("HeathLost");
+                lostHealth--;
             }
         }
+        objHeathList.Clear();
     }
 
     void GetObjHeathList()
@@ -69,7 +74,7 @@ public class UIHeathManager : MonoBehaviour
     private void clearHeathUI()
     {
 
-        for (int i = 1; i < objHeathList.Count; i++)
+        for (int i = 0; i < objHeathList.Count; i++)
         {
             Destroy(objHeathList[i]);
         }

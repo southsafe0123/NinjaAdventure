@@ -13,6 +13,7 @@ public class PlayerStatus : MonoBehaviour
     public static float s_Exp = 0;
     public static float s_level;
     public static float s_oldLevel;
+    public static float s_expRequire;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerStatus : MonoBehaviour
         s_oldLevel = level;
         s_level = level;
         s_expPickUpVariable = expPickUpVariable;
+        s_expRequire = expRequire;
     }
     void Update()
     {
@@ -28,14 +30,11 @@ public class PlayerStatus : MonoBehaviour
 
     void checkLevel()
     {
-        if (s_Exp >= expRequire)
+        if (s_Exp >= s_expRequire)
         {
             s_level++;
             s_Exp = 0;
-            expRequire += nextLevelExpRequire;
-            expUpdate();
-
-            Debug.Log("LevelUp");
+            s_expRequire += nextLevelExpRequire;
         }
     }
     public static bool IsLevelUp()
