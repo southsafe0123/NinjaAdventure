@@ -33,4 +33,8 @@ public class LoadScene : MonoBehaviour
         yield return new WaitForSeconds(dur + loadTime);
         SceneManager.LoadScene(sceneNum);
     }
+    public void loadMenu()
+    {
+        StartCoroutine(loadScene(0));
+    }
 }
