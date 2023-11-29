@@ -21,7 +21,7 @@ public class LoadScene : MonoBehaviour
         }
     }
 
-    void loadNextScene( )
+    public void loadNextScene( )
     {
         StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
