@@ -996,37 +996,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 48ca7a2f4a258a8449e8392d8bc8b36f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1892196902871505462
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892196902871505608}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1892196902871505463
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1067,7 +1041,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 127761303507571002, guid: 15be103950caa5d4a9df994892c16e77, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 26b3afd9e115eec41b74c681f519004d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1089,11 +1063,11 @@ GameObject:
   - component: {fileID: 1892196902871505460}
   - component: {fileID: 1892196902871505461}
   - component: {fileID: 1892196902871505463}
-  - component: {fileID: 1892196902871505462}
   - component: {fileID: 1800249984019984952}
   - component: {fileID: 1892196902871505611}
   - component: {fileID: 1892196902871505609}
   - component: {fileID: 1892196902871505610}
+  - component: {fileID: 1892196902871505612}
   m_Layer: 8
   m_Name: Boss
   m_TagString: enemy
@@ -1232,3 +1206,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}
+--- !u!58 &1892196902871505612
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892196902871505608}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

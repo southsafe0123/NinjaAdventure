@@ -48,7 +48,7 @@ public class BossDashState : StateMachineBehaviour
     {
        
         Vector2 dir = playerPos - bossPos;
-        rb.velocity = dir.normalized * bossBehavior.moveSpeed*4;
+        rb.velocity = dir.normalized * bossBehavior.moveSpeed*5f;
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

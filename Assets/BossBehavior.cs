@@ -12,6 +12,7 @@ public class BossBehavior : MonoBehaviour
     public float timeFollow;
     public float timeChargeDash;
     public float timeCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,15 @@ public class BossBehavior : MonoBehaviour
     {
         if (trigger.isPlayerInZone)
         {
+            if (trigger.player.position.x < transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0,0,0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
             anim.SetTrigger("idle-follow");
         }
     }

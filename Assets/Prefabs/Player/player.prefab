@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   expRequire: 4
-  nextLevelExpRequire: 1
+  nextLevelExpRequire: 2
   expPickUpVariable: 1
 --- !u!114 &146434669
 MonoBehaviour:

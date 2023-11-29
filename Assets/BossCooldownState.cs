@@ -15,26 +15,18 @@ public class BossCooldownState : StateMachineBehaviour
         bossBehavior = animator.gameObject.GetComponent<BossBehavior>();
         isChangeState = false;
         timer = 0;
+    
 
-        SetVector2To0();
-    }
-
-    private void SetVector2To0()
-    {
-        if (bossBehavior.isHitWallDashState)
-        {
-            rb.velocity = Vector2.zero;
-        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         timer += Time.deltaTime;
         if (timer > bossBehavior.timeCooldown)
         {
             isChangeState = true;
-            
         }
         if (isChangeState)
         {
