@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossDashState : StateMachineBehaviour
 {
     Rigidbody2D rb;
@@ -10,6 +11,7 @@ public class BossDashState : StateMachineBehaviour
     bool isStartDash;
     private Vector3 playerPos;
     private Vector3 bossPos;
+    public float dashSpeed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -41,14 +43,14 @@ public class BossDashState : StateMachineBehaviour
             var dir = playerPos - bossPos;
 
             bossBehavior.dangerLine.SetPosition(0, bossPos);
-            bossBehavior.dangerLine.SetPosition(1, dir.normalized*100);
+            bossBehavior.dangerLine.SetPosition(1, dir.normalized*500);
         }
     }
     private void Dash(Animator animator)
     {
        
         Vector2 dir = playerPos - bossPos;
-        rb.velocity = dir.normalized * bossBehavior.moveSpeed*5f;
+        rb.velocity = dir.normalized * bossBehavior.moveSpeed*dashSpeed;
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

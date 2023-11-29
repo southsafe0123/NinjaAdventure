@@ -1323,6 +1323,7 @@ MonoBehaviour:
   expRequire: 4
   nextLevelExpRequire: 2
   expPickUpVariable: 1
+  maxLevel: 1
 --- !u!114 &146434669
 MonoBehaviour:
   m_ObjectHideFlags: 0
