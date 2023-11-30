@@ -7,6 +7,15 @@ public class MainMenu_Script : MonoBehaviour
 {
     private bool isPause = false;
     public GameObject Menu;
+    public GameObject Gameover;
+
+    private void Start()
+    {
+        PlayerHealth.PlayerCurrentHealth = 2;
+        Gameover.SetActive(false);
+        Time.timeScale = 1; 
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
@@ -44,6 +53,8 @@ public class MainMenu_Script : MonoBehaviour
                 HideMenu();
             }
         }
+
+        DisplayGameOver();
     }
 
     void ShowMenu()
@@ -56,5 +67,14 @@ public class MainMenu_Script : MonoBehaviour
     {
         Menu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void DisplayGameOver()
+    {
+        if (PlayerHealth.PlayerCurrentHealth == 0)
+        {
+            Gameover.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
