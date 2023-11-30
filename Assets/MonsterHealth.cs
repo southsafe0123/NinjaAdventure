@@ -6,12 +6,9 @@ public class MonsterHealth : MonoBehaviour
     public MonsterBehavior monster;
     public GameObject prefExp;
     private bool lockDead;
-<<<<<<< HEAD
     public float shurikenDamage;
     public static float s_shurikenDamage;
     public GameObject slimePrefab;
-=======
->>>>>>> eaaa5e930c65d14495521f14917c7eba43d387f7
 
     private void Start()
     {
@@ -27,11 +24,7 @@ public class MonsterHealth : MonoBehaviour
     }
     private void Update()
     {
-<<<<<<< HEAD
         if (health <= 0 && !lockDead)
-=======
-        if (health <= 0&&!lockDead)
->>>>>>> eaaa5e930c65d14495521f14917c7eba43d387f7
         {
             lockDead = true;
             DropExp();
@@ -41,7 +34,7 @@ public class MonsterHealth : MonoBehaviour
 
     void GetDamage(float damage)
     {
-<<<<<<< HEAD
+
         health -= (int)damage;
     }
 
@@ -82,9 +75,5 @@ public class MonsterHealth : MonoBehaviour
         {
             Debug.LogError("prefExp is not assigned!");
         }
-=======
-
-        health -= damage;
->>>>>>> eaaa5e930c65d14495521f14917c7eba43d387f7
     }
 }
