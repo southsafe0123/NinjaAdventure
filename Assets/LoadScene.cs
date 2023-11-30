@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +21,7 @@ public class LoadScene : MonoBehaviour
         }
     }
 
-    void loadNextScene( )
+    public void loadNextScene( )
     {
         StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
@@ -33,5 +32,9 @@ public class LoadScene : MonoBehaviour
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
         yield return new WaitForSeconds(dur + loadTime);
         SceneManager.LoadScene(sceneNum);
+    }
+    public void loadMenu()
+    {
+        StartCoroutine(loadScene(0));
     }
 }

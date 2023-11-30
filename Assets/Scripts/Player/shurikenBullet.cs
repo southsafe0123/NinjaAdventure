@@ -8,6 +8,7 @@ public class shurikenBullet : MonoBehaviour
     bool isHitSth = false;
     private Animator anim;
     public GameObject arrow;
+    public static float s_shurikenDamage=1;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,8 @@ public class shurikenBullet : MonoBehaviour
     {
         if (collision.CompareTag("wall") || collision.CompareTag("enemy")) {
             StartCoroutine(changeBehavior());
-            
         }
+        
     }
     
     IEnumerator changeBehavior()
