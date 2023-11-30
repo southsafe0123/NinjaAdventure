@@ -8,6 +8,7 @@ public class PlayerStatus : MonoBehaviour
     public float expRequire;
     public float nextLevelExpRequire;
     public float expPickUpVariable;
+    public float maxLevel;
 
     public static float s_expPickUpVariable;
     public static float s_Exp = 0;
@@ -30,12 +31,16 @@ public class PlayerStatus : MonoBehaviour
 
     void checkLevel()
     {
-        if (s_Exp >= s_expRequire)
+        if (maxLevel < 5)
         {
-            s_level++;
-            s_Exp = 0;
-            s_expRequire += nextLevelExpRequire;
+            if (s_Exp >= s_expRequire)
+            {
+                s_level++;
+                s_Exp = 0;
+                s_expRequire += nextLevelExpRequire;
+            }
         }
+        
     }
     public static bool IsLevelUp()
     {
