@@ -6,6 +6,7 @@ public class BossFollowState : StateMachineBehaviour
 {
     Rigidbody2D rb;
     BossBehavior bossBehavior;
+    BossHealth bossHealth;
     float timer;
     bool isGoNextState;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -13,7 +14,10 @@ public class BossFollowState : StateMachineBehaviour
     {
         rb = animator.gameObject.GetComponent<Rigidbody2D>();
         bossBehavior = animator.gameObject.GetComponent<BossBehavior>();
+        bossHealth = animator.gameObject.GetComponent<BossHealth>();
         isGoNextState = false;
+
+        bossHealth.isInCooldownState = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

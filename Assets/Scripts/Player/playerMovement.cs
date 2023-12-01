@@ -8,8 +8,8 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed;
     public float dashSpeed;
     public float dashDuration;
-    public float speedSlowDown; 
-    public float dashCooldown; 
+    public float speedSlowDown;
+    public float dashCooldown;
     public bool isDashing;
     public bool canDash = true;
     public float timer;
@@ -25,11 +25,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canDash) StartCoroutine(CooldownDash()); 
+        if (!canDash) StartCoroutine(CooldownDash());
 
 
-        if (isDashing||PlayerHealth.playerGotHit || Time.timeScale == 0) return;
-        
+        if (isDashing || PlayerHealth.playerGotHit || Time.timeScale == 0) return;
+
 
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
@@ -49,7 +49,7 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing||PlayerHealth.playerGotHit)
+        if (isDashing || PlayerHealth.playerGotHit)
         {
             return;
         }
@@ -107,7 +107,7 @@ public class playerMovement : MonoBehaviour
         canDash = true;
     }
 
-     
+
     //stop moment when player get shuriken
     IEnumerator HitStop()
     {
