@@ -13,7 +13,7 @@ public class VerticalCamera : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        target = GameObject.Find("player").transform;
+        target = GameObject.Find("player").transform; 
         enableLoadscene.SetActive(true);
     }
     void FixedUpdate()

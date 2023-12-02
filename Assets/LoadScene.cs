@@ -1,12 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class LoadScene : MonoBehaviour
 {
     public Animator anim;
     public float loadTime = 3f;
+    public int loadscene;
     // Update is called once per frame
     void Start()
     {
@@ -17,13 +19,22 @@ public class LoadScene : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            loadNextScene();
+            loadNextScene(loadscene);
         }
     }
 
-    public void loadNextScene( )
+    public void loadNextScene(int loadscene)
     {
-        StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(loadScene(loadscene));
+        Debug.Log("Bắt đầu màn " + (loadscene));
+    }
+
+    public void PlayAgain(int reloadscene)
+    {
+        PlayerHealth.PlayerCurrentHealth = PlayerHealth.PlayerMaxHeath;
+        playerShooting.ShurikenPLayerHave = 1;
+        StartCoroutine(loadScene(reloadscene));
+        Time.timeScale = 1;
     }
 
     IEnumerator loadScene(int sceneNum)
@@ -36,5 +47,6 @@ public class LoadScene : MonoBehaviour
     public void loadMenu()
     {
         StartCoroutine(loadScene(0));
+        Time.timeScale = 1;
     }
 }

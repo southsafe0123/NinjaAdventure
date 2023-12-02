@@ -8,12 +8,11 @@ public class MainMenu_Script : MonoBehaviour
     private bool isPause = false;
     public GameObject Menu;
     public GameObject Gameover;
-
+    public GameObject loadscene;
     private void Start()
     {
-        PlayerHealth.PlayerCurrentHealth = 2;
         Gameover.SetActive(false);
-        Time.timeScale = 1; 
+        Time.timeScale = 1;
     }
 
     public void PlayGame()
