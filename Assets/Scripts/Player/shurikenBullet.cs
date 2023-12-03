@@ -37,10 +37,10 @@ public class shurikenBullet : MonoBehaviour
     {
         isHitSth = true;
         anim.enabled = false;
-        yield return new WaitForSeconds(0.05f);
+        
+        yield return null;
         gameObject.tag = "GrShuriken";
         arrow.SetActive(true);
-        yield return null;
         StopCoroutine(changeBehavior());
     }
 }
