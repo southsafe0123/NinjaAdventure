@@ -1,15 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterHealth : MonoBehaviour
+public class FireGhostHealth : MonoBehaviour
 {
     public int health;
-    public MonsterBehavior monster;
+    public MatroiMovement monster;
     public GameObject prefExp;
     private bool lockDead;
 
     private void Start()
     {
-        monster = GetComponent<MonsterBehavior>();
+        monster = GetComponent<MatroiMovement>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +41,7 @@ public class MonsterHealth : MonoBehaviour
     {
         Debug.Log("Monster is dead!");
 
-        // Tiếp tục xử lý khi slime chết
+        // Ti?p t?c x? l� khi slime ch?t
         Destroy(gameObject, monster.knockBackDuration);
     }
 
@@ -48,6 +50,10 @@ public class MonsterHealth : MonoBehaviour
         if (prefExp != null)
         {
             Instantiate(prefExp, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("prefExp is not assigned!");
         }
     }
 }

@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 196375921922003336}
   - component: {fileID: 405813625}
   - component: {fileID: 4392556485511028673}
+  - component: {fileID: -3160180372104641805}
   m_Layer: 8
   m_Name: Slime
   m_TagString: enemy
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: {fileID: 196375921643332831}
   monsSpeed: 2.7
-  knockBackForce: 500
+  knockBackForce: 400
   knockBackDuration: 0.1
   hitLagWait: 0.3
   hitLagDur: 0.07
@@ -269,6 +270,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ed9ad5799ecf248b294d1a4ec1dd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1
   monster: {fileID: 196375921922003336}
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}
+--- !u!114 &-3160180372104641805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196375921922003337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f6fbc65c1cfde49a7d945c6861e315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeInvis: 0.5

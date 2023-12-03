@@ -19,6 +19,21 @@ public class fireBulletScript : MonoBehaviour
         rd.velocity = new Vector2(direction.x, direction.y).normalized * speedBullet;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player")|| collision.collider.CompareTag("wall"))
+        {
+            Destroy(gameObject);
+        } 
+    }
+
+     void OnTriggerEnter2D(Collider2D collision)
+    { 
+     if(collision.CompareTag("shuriken"))
+        {
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

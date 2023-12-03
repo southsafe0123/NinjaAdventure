@@ -25,7 +25,7 @@ public class exp : MonoBehaviour
             p.remainingLifetime = 0;
 
             PlayerStatus.expUpdate(); // tăng exp
-
+            Destroy(gameObject);
             particleEnter[i] = p;
         }
 
