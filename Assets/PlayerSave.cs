@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSave : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class PlayerSave : MonoBehaviour
         PlayerLoadData();
     }
 
+    void Update()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            //tiến hành lưu nhân vật ở đây trước khi về menu;
+            Destroy(gameObject);
+        }
+    }
     private void PlayerLoadData()
     {
         if (isNewPlay)

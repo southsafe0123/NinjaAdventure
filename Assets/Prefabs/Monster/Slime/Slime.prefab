@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ed9ad5799ecf248b294d1a4ec1dd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 2
   monster: {fileID: 196375921922003336}
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}
 --- !u!114 &-3160180372104641805

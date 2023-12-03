@@ -30,8 +30,11 @@ public class LoadScene : MonoBehaviour
     {
         anim.SetTrigger("Start");
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
-        yield return new WaitForSeconds(dur + loadTime);
-        SceneManager.LoadScene(sceneNum);
+        
+        yield return new WaitForSecondsRealtime(dur + loadTime);
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(sceneNum);
+        
     }
     public void loadMenu()
     {

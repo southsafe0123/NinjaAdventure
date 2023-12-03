@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCurrentHealth: 2
   playerMaxHeath: 2
-  knockBackForce: 500
+  knockBackForce: 600
   knockBackDuration: 0.1
   invisDuration: 1.2
   freezeTimeDur: 0

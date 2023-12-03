@@ -307,6 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e134eca945af9bd468c7fc65c7bcbd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 4
   monster: {fileID: 3148218030043022219}
   prefExp: {fileID: 6774713602432272398, guid: 2c89acd0c25e2334698ced7e6ed1d6e2, type: 3}

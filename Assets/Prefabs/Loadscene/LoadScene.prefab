@@ -255,7 +255,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 165c1ce07d5e5964c8acd173a23814bb, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8526721848490969915}
-  loadTime: 1
+  loadTime: 0.5
 --- !u!61 &969028834
 BoxCollider2D:
   m_ObjectHideFlags: 0

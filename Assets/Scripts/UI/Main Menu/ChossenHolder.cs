@@ -1,47 +1,61 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChossenHolder : MonoBehaviour
 {
-    public GameObject FlagPlay;
-    public GameObject FlagOption;
-    public GameObject FlagQuit;
-    public Text TextPlay;
-    public Text TextOption;
-    public Text TextQuit;
+    public GameObject flag;
+    public Text text;
 
-    public void DisplayChossenPlay()
+    public void DisplayChossen()
     {
-        FlagPlay.SetActive(true);
-        TextPlay.color = Color.white;
-    }
-    public void UnDisplayChossenPlay()
-    {
-        FlagPlay.SetActive(false);
-        TextPlay.color = Color.black;
-    }
+        if (flag != null)
+        {
+            flag.SetActive(true);
+        }
 
-    public void DisplayChossenOption()
-    {
-        FlagOption.SetActive(true);
-        TextOption.color = Color.white;
+        text.color = Color.white;
     }
-    public void UnDisplayChossenOption()
+    public void UnDisplayChossen()
     {
-        FlagOption.SetActive(false);
-        TextOption.color = Color.black;
+        if (flag != null)
+        {
+            flag.SetActive(false);
+        }
+        
+        text.color = Color.black;
     }
 
-    public void DisplayChossenQuit()
+    public void PlayGame()
     {
-        FlagQuit.SetActive(true);
-        TextQuit.color = Color.white;
+        SceneManager.LoadSceneAsync(1);
     }
-    public void UnDisplayChossenQuit()
+
+    public void BackToMainMenu()
     {
-        FlagQuit.SetActive(false);
-        TextQuit.color = Color.black;
+        SceneManager.LoadSceneAsync(0);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Đã thoát");
+        Application.Quit();
+    }
+   
+    public void Resume()
+    {
+        transform.parent.parent.GetComponent<PauseMenu>().TogglePause();
+    }
+
+    public void pointerEnterStopPlayerShoot()
+    {
+        GameObject.Find("player").transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void pointerExitStopPlayerShoot()
+    {
+        GameObject.Find("player").transform.GetChild(0).gameObject.SetActive(true);
     }
 }

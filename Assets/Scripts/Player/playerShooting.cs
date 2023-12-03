@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class playerShooting : MonoBehaviour
 {
@@ -32,8 +33,7 @@ public class playerShooting : MonoBehaviour
         {
             isShooting = false;
         }
-
-        if (Input.GetMouseButtonDown(0) && !isShooting && Time.timeScale == 1)
+        if (Input.GetMouseButtonDown(0) && !isShooting && Time.timeScale == 1 )
         {
             StartCoroutine(shoot());
         }

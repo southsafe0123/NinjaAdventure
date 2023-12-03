@@ -2082,7 +2082,7 @@ Transform:
   - {fileID: 1109814627}
   - {fileID: 1737920323}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251536916
 GameObject:
@@ -3018,7 +3018,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 634283766}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: DisplayChossenPlay
+          m_MethodName: DisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3034,7 +3034,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 634283766}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: UnDisplayChossenPlay
+          m_MethodName: UnDisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3056,12 +3056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37219a8190426f43a9c1b4e4454cccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlagPlay: {fileID: 1903594079}
-  FlagOption: {fileID: 0}
-  FlagQuit: {fileID: 0}
-  TextPlay: {fileID: 1680951680}
-  TextOption: {fileID: 0}
-  TextQuit: {fileID: 0}
+  flag: {fileID: 1903594079}
+  text: {fileID: 1680951680}
 --- !u!114 &634283767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,6 +3113,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &634283768
 MonoBehaviour:
@@ -3397,7 +3405,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 768405027}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: DisplayChossenQuit
+          m_MethodName: DisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3413,7 +3421,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 768405027}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: UnDisplayChossenQuit
+          m_MethodName: UnDisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3435,12 +3443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37219a8190426f43a9c1b4e4454cccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlagPlay: {fileID: 0}
-  FlagOption: {fileID: 0}
-  FlagQuit: {fileID: 1617801809}
-  TextPlay: {fileID: 0}
-  TextOption: {fileID: 0}
-  TextQuit: {fileID: 1426540942}
+  flag: {fileID: 0}
+  text: {fileID: 1426540942}
 --- !u!114 &768405028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3631,7 +3635,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 852255309}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: DisplayChossenQuit
+          m_MethodName: DisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3647,7 +3651,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 852255309}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: UnDisplayChossenQuit
+          m_MethodName: UnDisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3669,12 +3673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37219a8190426f43a9c1b4e4454cccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlagPlay: {fileID: 0}
-  FlagOption: {fileID: 0}
-  FlagQuit: {fileID: 1617801809}
-  TextPlay: {fileID: 0}
-  TextOption: {fileID: 0}
-  TextQuit: {fileID: 266624106}
+  flag: {fileID: 1617801809}
+  text: {fileID: 266624106}
 --- !u!114 &852255310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3719,8 +3719,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1923636957}
-        m_TargetAssemblyTypeName: MainMenu_Script, Assembly-CSharp
+      - m_Target: {fileID: 852255309}
+        m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -6314,7 +6314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45da0b7b4382dd4db627d87d616193d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Menu: {fileID: 0}
 --- !u!81 &1923636958
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6434,7 +6433,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1996346297}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: DisplayChossenOption
+          m_MethodName: DisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6450,7 +6449,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1996346297}
           m_TargetAssemblyTypeName: ChossenHolder, Assembly-CSharp
-          m_MethodName: UnDisplayChossenOption
+          m_MethodName: UnDisplayChossen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6472,12 +6471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37219a8190426f43a9c1b4e4454cccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlagPlay: {fileID: 0}
-  FlagOption: {fileID: 1706000216}
-  FlagQuit: {fileID: 0}
-  TextPlay: {fileID: 0}
-  TextOption: {fileID: 1844576122}
-  TextQuit: {fileID: 0}
+  flag: {fileID: 1706000216}
+  text: {fileID: 1844576122}
 --- !u!114 &1996346298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6619,13 +6614,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadScene
       objectReference: {fileID: 0}
-    - target: {fileID: 8526721849391890530, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8526721849391890533, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8526721849391890533, guid: 1657dd6994e82a240bfd10fa0f115b08, type: 3}
       propertyPath: m_LocalPosition.x
