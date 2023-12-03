@@ -69,7 +69,7 @@ public class Login : MonoBehaviour
                 ErrorResponse errorResponse = JsonUtility.FromJson<ErrorResponse>(jsonString);
 
                 alertText.text = errorResponse.error;
-                alertText.text = "Kiểm tra tài khoản hoặc mật khẩu...";
+             
                 loginButton.interactable = true;
             }
         }
@@ -77,5 +77,9 @@ public class Login : MonoBehaviour
 
 
         yield return null;
+    }
+    public class ErrorResponse
+    {
+        public string error;
     }
 }
