@@ -16,7 +16,7 @@ public class Register : MonoBehaviour
     [SerializeField] private TMP_InputField repasswordInputField;
     [SerializeField] private TextMeshProUGUI alertText;
     [SerializeField] private Button registerButton;
-
+   
     public void onClick() {
        // registerButton.interactable = false;
         
@@ -31,6 +31,7 @@ public class Register : MonoBehaviour
         string name= nameInputField.text;
         string password = passwordInputField.text;
         string repassword = repasswordInputField.text;
+        
 
         if (email.Equals("") || name.Equals("") || repassword.Equals("") || password.Equals(""))
         {
@@ -74,15 +75,21 @@ public class Register : MonoBehaviour
             }
             if (request.result == UnityWebRequest.Result.Success)
             {
+
                 alertText.text = "Đăng ký  thành công";
                 SceneManager.LoadScene("Login_Scene");
+               
             }
             else {
-
-                alertText.text = "Đăng ký không thành công";
+                string jsonString = request.downloadHandler.text;
+                ErrorResponse errorResponse = JsonUtility.FromJson<ErrorResponse>(jsonString);
+                
+                alertText.text = errorResponse.error;
                 Debug.Log(request.error);
+                Debug.Log(errorResponse.error);
             }
-            Debug.Log(formData);
+           
+            
             
         }
 
@@ -94,6 +101,9 @@ public class Register : MonoBehaviour
 
 
         yield return null;
+    }
+    public class ErrorResponse {
+       public string error;
     }
 
 }

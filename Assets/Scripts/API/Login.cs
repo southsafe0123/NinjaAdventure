@@ -56,8 +56,8 @@ public class Login : MonoBehaviour
                 GameAccount gameAccount = JsonUtility.FromJson<GameAccount>(request.downloadHandler.text);
 
                 alertText.text = "welcome..."+((gameAccount.role < 1 ) ?  "Admin": gameAccount.name);
-                 
-                Debug.Log(request.downloadHandler.text);
+
+                Debug.Log(request.downloadHandler.text); ;
             } else if (request.result== UnityWebRequest.Result.ConnectionError) {
 
                 alertText.text = "Kiểm tra kết nối...";
@@ -65,6 +65,10 @@ public class Login : MonoBehaviour
             }
             else
             {
+                string jsonString = request.downloadHandler.text;
+                ErrorResponse errorResponse = JsonUtility.FromJson<ErrorResponse>(jsonString);
+
+                alertText.text = errorResponse.error;
                 alertText.text = "Kiểm tra tài khoản hoặc mật khẩu...";
                 loginButton.interactable = true;
             }
