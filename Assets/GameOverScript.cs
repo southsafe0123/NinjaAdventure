@@ -5,16 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    private int manchoi;
-    public void PlayAgain(int manchoi)
+    public GameObject gameoverPanel;
+    private void Update()
     {
-        SceneManager.LoadSceneAsync(manchoi); 
+        if (PlayerHealth.PlayerCurrentHealth <= 0)
+        {
+            gameoverPanel.SetActive(true);
+        }
     }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadSceneAsync(0);
-    }
-
-   
 }

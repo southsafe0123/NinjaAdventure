@@ -201,7 +201,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &8526721848490969913
 MonoBehaviour:
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8526721848490969915}
-  loadTime: 0.5
+  loadTime: 1
 --- !u!61 &969028834
 BoxCollider2D:
   m_ObjectHideFlags: 0

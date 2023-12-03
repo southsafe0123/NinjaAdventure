@@ -8,7 +8,7 @@ public class LoadScene : MonoBehaviour
 {
     public Animator anim;
     public float loadTime = 3f;
-    public int loadscene;
+    public static int scenePlayerIn;
     // Update is called once per frame
     void Start()
     {
@@ -19,37 +19,33 @@ public class LoadScene : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            loadNextScene(loadscene);
+            loadNextScene();
         }
     }
-
-    public void loadNextScene(int loadscene)
+    public void loadNextScene()
     {
-        StartCoroutine(loadScene(loadscene));
-        Debug.Log("Bắt đầu màn " + (loadscene));
+        StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex+1));
     }
 
-    public void PlayAgain(int reloadscene)
+    public void PlayAgain()
     {
-        PlayerHealth.PlayerCurrentHealth = PlayerHealth.PlayerMaxHeath;
-        playerShooting.ShurikenPLayerHave = 1;
-        StartCoroutine(loadScene(reloadscene));
-        Time.timeScale = 1;
+        PlayerSave.ResetStat();
+        scenePlayerIn = 1;
+        StartCoroutine(loadScene(4));
     }
 
     IEnumerator loadScene(int sceneNum)
     {
         anim.SetTrigger("Start");
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
-        
-        yield return new WaitForSecondsRealtime(dur + loadTime);
+        yield return new WaitForSecondsRealtime(dur);
         Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(loadTime);
         SceneManager.LoadSceneAsync(sceneNum);
         
     }
     public void loadMenu()
     {
         StartCoroutine(loadScene(0));
-        Time.timeScale = 1;
     }
 }

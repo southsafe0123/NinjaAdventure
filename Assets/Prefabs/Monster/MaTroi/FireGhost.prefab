@@ -267,7 +267,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8422674042372637005, guid: 4755ee9d158ca804dab9c5d4fb3653f1, type: 3}
   bulletPos: {fileID: 3148218029469200421}
   delayShotBtw: 3.5
-  bulletSpeed: 10
+  bulletSpeed: 7
   moveSpeed: 3
   hitLagDur: 0.07
   knockBackDuration: 0.1
