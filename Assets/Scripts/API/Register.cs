@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class Register : MonoBehaviour
+{
+    [SerializeField] private string authenticationEndpoint = "http://192.168.68.125:8686/users/register";
+    [SerializeField] private TMP_InputField emailInputField;
+    [SerializeField] private TMP_InputField nameInputField;
+    [SerializeField] private TMP_InputField passwordInputField;
+    [SerializeField] private TMP_InputField repasswordInputField;
+    [SerializeField] private TextMeshProUGUI alertText;
+    [SerializeField] private Button registerButton;
+
+    public void onClick() {
+       // registerButton.interactable = false;
+        
+        StartCoroutine(TryRegister());
+    }
+
+    private IEnumerator TryRegister()
+    {
+
+
+        string email = emailInputField.text;
+        string name= nameInputField.text;
+        string password = passwordInputField.text;
+        string repassword = repasswordInputField.text;
+
+        if (email.Equals("") || name.Equals("") || repassword.Equals("") || password.Equals(""))
+        {
+            alertText.text = "Không được để trống thông tin";
+
+        }
+        else {
+            alertText.text = "Đăng ký tài khoản";
+            if (password != repassword)
+            {
+                alertText.text = "Kiểm tra lại mật khẩu";
+                yield break;
+            }
+            Model_Register model_Register = new Model_Register
+            {
+                email = email,
+                name = name,
+                password = password,
+                role = 1
+            };
+            WWWForm formData = new WWWForm();
+            formData.AddField("email", email);
+            formData.AddField("name", name);
+            formData.AddField("password", password);
+            formData.AddField("role", 1);
+           
+            string jsonData = JsonUtility.ToJson(model_Register);
+            UnityWebRequest request = UnityWebRequest.Post(authenticationEndpoint,formData);
+            var handler = request.SendWebRequest();
+
+            float startTime = 0.0f;
+            while (!handler.isDone)
+            {
+                startTime += Time.deltaTime;
+                if (startTime > 10.0f)
+                {
+                    break;
+                }
+
+                yield return null;
+            }
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                alertText.text = "Đăng ký  thành công";
+                SceneManager.LoadScene("Login_Scene");
+            }
+            else {
+
+                alertText.text = "Đăng ký không thành công";
+                Debug.Log(request.error);
+            }
+            Debug.Log(formData);
+            
+        }
+
+       
+
+         
+           
+
+
+
+        yield return null;
+    }
+
+}

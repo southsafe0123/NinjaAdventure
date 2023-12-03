@@ -55,7 +55,7 @@ public class Login : MonoBehaviour
                 loginButton.interactable = false;
                 GameAccount gameAccount = JsonUtility.FromJson<GameAccount>(request.downloadHandler.text);
 
-                alertText.text = "welcome..."+((gameAccount.role < 1 ) ? gameAccount.name : "Admin");
+                alertText.text = "welcome..."+((gameAccount.role < 1 ) ?  "Admin": gameAccount.name);
                  
                 Debug.Log(request.downloadHandler.text);
             } else if (request.result== UnityWebRequest.Result.ConnectionError) {
