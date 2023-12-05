@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour
 {
-    [SerializeField] private string authenticationEndpoint = "http://192.168.68.125:8686/users/register";
+    [SerializeField] private string authenticationEndpoint = "http://172.16.108.160:8686/users/register";
     [SerializeField] private TMP_InputField emailInputField;
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
@@ -76,7 +76,7 @@ public class Register : MonoBehaviour
             {
 
                 alertText.text = "Register Success";
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadSceneAsync("Login_Scene");
                
             }
             else {
