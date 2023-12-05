@@ -15,6 +15,7 @@ public class MonsterBehavior : MonoBehaviour
     public float hitLagWait;
     private Animator anim;
     public float hitLagDur;
+    public GameObject hiteffect;
 
     private void Start()
     {
@@ -76,12 +77,14 @@ public class MonsterBehavior : MonoBehaviour
     }
     private void endKnockBackState()
     {
+        
         anim.enabled = true;
         gotHit = false;
     }
 
     private void alertState()
     {
+        
         rb.velocity = Vector2.zero;
         sprite.color = new Color(1, 1, 1, 1);
         range.gameObject.GetComponent<CircleCollider2D>().radius = 20;
@@ -89,6 +92,11 @@ public class MonsterBehavior : MonoBehaviour
 
     void knockBackState(Collider2D collision)
     {
+
+        var obj = Instantiate(hiteffect, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 180)));
+        var dur = obj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        Destroy(obj, dur);
+
         anim.enabled = false;
         rb.velocity = Vector2.zero;
         gotHit = true;

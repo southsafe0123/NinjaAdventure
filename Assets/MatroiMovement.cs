@@ -24,6 +24,8 @@ public class MatroiMovement : MonoBehaviour
     public SpriteRenderer sprite;
     public float knockBackForce;
 
+    public GameObject hiteffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -132,6 +134,10 @@ public class MatroiMovement : MonoBehaviour
 
     void knockBackState(Collider2D collision)
     {
+        var obj = Instantiate(hiteffect, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 180)));
+        var dur = obj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        Destroy(obj, dur);
+
         anim.enabled = false;
         rb.velocity = Vector2.zero;
         gotHit = true;
