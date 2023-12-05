@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class PlayerHealth : MonoBehaviour
         if (collision.collider.CompareTag("enemy") && !playerInvis)
         {
             PlayerCurrentHealth--;
+            if(PlayerCurrentHealth <= 0)
+            {
+                Time.timeScale = 0f;
+                gameObject.SetActive(true);
+                
+            }
             StartCoroutine(gotHitState(collision));
         }
     }

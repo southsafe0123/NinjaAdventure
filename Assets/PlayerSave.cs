@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
-    public static bool isNewPlay;
     void Awake()
     {
         if (instance != null)
@@ -20,33 +19,20 @@ public class PlayerSave : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         Application.targetFrameRate = 60;
-
-        PlayerLoadData();
     }
 
-    void Update()
+
+    public static void ResetStat()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            //tiến hành lưu nhân vật ở đây trước khi về menu;
-            Destroy(gameObject);
-        }
+        playerShooting.ShurikenPLayerHave = 1;
+        PlayerHealth.PlayerMaxHeath = 2;
+        PlayerHealth.PlayerCurrentHealth = 2;
+        shurikenBullet.s_shurikenDamage = 1;
+        PlayerStatus.s_Exp = 0;
+        PlayerStatus.s_expRequire = 4;
+        PlayerStatus.s_level = 0;
+        PlayerStatus.s_oldLevel = 0;
     }
-    private void PlayerLoadData()
-    {
-        if (isNewPlay)
-        {
-            playerShooting.ShurikenPLayerHave = 1;
-            PlayerHealth.PlayerCurrentHealth = 2;
-            PlayerHealth.PlayerMaxHeath=2;
-            shurikenBullet.s_shurikenDamage=1;
-        }
-        else
-        {
-            //take data from api
-        }
-    }
-
     public void addShuriken()
     {
         playerShooting.ShurikenPLayerHave++;

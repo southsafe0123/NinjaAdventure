@@ -25,6 +25,8 @@ public class playerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (playerMovement.mainCamera == null) return;
         if (ShurikenPLayerHave == 0)
         {
             isShooting = true;

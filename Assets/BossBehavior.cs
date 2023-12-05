@@ -14,7 +14,7 @@ public class BossBehavior : MonoBehaviour
     public float timeChargeDash;
     public float timeCooldown;
     public BossHealth bossHealth;
-    private HorizontalCameraScene3 camShake;
+    private CamShake camShake;
 
     [Header("Camshake Stat in dashState")]
     public float magnitudeCamShake;
@@ -27,7 +27,7 @@ public class BossBehavior : MonoBehaviour
         inCDState = false;
         anim = GetComponent<Animator>();
         bossHealth = GetComponent<BossHealth>();
-        camShake = GameObject.Find("Main Camera").GetComponent<HorizontalCameraScene3>();
+        camShake = GameObject.Find("Main Camera").GetComponent<CamShake>();
     }
 
     // Update is called once per frame
@@ -58,6 +58,7 @@ public class BossBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("wall") && inCDState)
         {
+            gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine(camShake.camShake(timeCamShake,magnitudeCamShake));
         }
     }

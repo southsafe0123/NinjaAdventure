@@ -5,16 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    private int manchoi;
-    public void PlayAgain(int manchoi)
+    public GameObject gameoverPanel;
+    private GameObject musicManager;
+    private void Start()
     {
-        SceneManager.LoadSceneAsync(manchoi); 
+        musicManager = GameObject.Find("MusicManager");
     }
-
-    public void MainMenu()
+    private void Update()
     {
-        SceneManager.LoadSceneAsync(0);
+        if (PlayerHealth.PlayerCurrentHealth <= 0)
+        {
+            gameoverPanel.SetActive(true);
+            if(musicManager != null)
+            {
+                
+                foreach (Transform children in musicManager.transform)
+                {
+                    children.gameObject.SetActive(false);
+                    if (children.gameObject.name.Equals("DieMusic"))
+                    {
+                        children.gameObject.SetActive(true);
+                    }
+                   
+                }
+                musicManager = null;
+            }
+        }
     }
-
-   
 }

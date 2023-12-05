@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -25,10 +26,10 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (!canDash) StartCoroutine(CooldownDash());
 
-
-        if (isDashing || PlayerHealth.playerGotHit || Time.timeScale == 0) return;
+        if (isDashing || PlayerHealth.playerGotHit || Time.timeScale == 0||mainCamera == null) return;
 
 
         move.x = Input.GetAxisRaw("Horizontal");
@@ -49,7 +50,7 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing || PlayerHealth.playerGotHit)
+        if (isDashing || PlayerHealth.playerGotHit || Time.timeScale == 0|| mainCamera == null)
         {
             return;
         }

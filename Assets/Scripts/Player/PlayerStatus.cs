@@ -33,7 +33,7 @@ public class PlayerStatus : MonoBehaviour
 
     void checkLevel()
     {
-        if (maxLevel < 5)
+        if (s_level < maxLevel)
         {
             if (s_Exp >= s_expRequire)
             {
