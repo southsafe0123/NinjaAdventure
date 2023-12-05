@@ -35,14 +35,13 @@ public class Register : MonoBehaviour
 
         if (email.Equals("") || name.Equals("") || repassword.Equals("") || password.Equals(""))
         {
-            alertText.text = "Không được để trống thông tin";
+            alertText.text = "Don't leave blank";
 
         }
         else {
-            alertText.text = "Đăng ký tài khoản";
             if (password != repassword)
             {
-                alertText.text = "Kiểm tra lại mật khẩu";
+                alertText.text = "Check Password Again";
                 yield break;
             }
             Model_Register model_Register = new Model_Register
@@ -76,8 +75,8 @@ public class Register : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
 
-                alertText.text = "Đăng ký  thành công";
-                SceneManager.LoadScene("Login_Scene");
+                alertText.text = "Register Success";
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
                
             }
             else {

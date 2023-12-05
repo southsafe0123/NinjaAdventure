@@ -9,7 +9,11 @@ public class PauseMenu : MonoBehaviour
     public bool isPause;
     public GameObject pauseMenu;
     public bool isPauseClick;
-
+    private GameObject musicManager;
+    private void Start()
+    {
+        musicManager = GameObject.Find("MusicManager");
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,10 +28,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
     }
 
+ 
+
     public void HideMenu()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+        
     }
     public void isClicked()
     {

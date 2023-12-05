@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class LoadScene : MonoBehaviour
     public Animator anim;
     public float loadTime = 3f;
     public static int scenePlayerIn;
+    public GameObject musicAnimator;
     // Update is called once per frame
     void Start()
     {
@@ -33,9 +35,20 @@ public class LoadScene : MonoBehaviour
         scenePlayerIn = 1;
         StartCoroutine(loadScene(4));
     }
-
+    public void LoadSceneNum(int num)
+    {
+        StartCoroutine(loadScene(num));
+    }
     IEnumerator loadScene(int sceneNum)
     {
+        foreach (Transform children in musicAnimator.transform)
+        {
+            if (children.GetComponent<Animator>())
+            {
+                children.gameObject.GetComponent<Animator>().Play("MusicFadeOut");
+            }
+            
+        }
         anim.SetTrigger("Start");
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
         yield return new WaitForSecondsRealtime(dur);
@@ -47,5 +60,20 @@ public class LoadScene : MonoBehaviour
     public void loadMenu()
     {
         StartCoroutine(loadScene(0));
+    }
+
+    public void ClickQuitGame()
+    {
+        StartCoroutine(QuitGame());
+    }
+
+    private IEnumerator QuitGame()
+    {
+        anim.SetTrigger("Start");
+        var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
+        yield return new WaitForSecondsRealtime(dur);
+        Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(loadTime);
+        Application.Quit();
     }
 }

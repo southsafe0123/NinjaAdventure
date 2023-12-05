@@ -12,6 +12,7 @@ public class BossHealth : MonoBehaviour
     public bool isInCooldownState;
     public float numOfExp;
     public GameObject bossUI;
+    public GameObject musicManager;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class BossHealth : MonoBehaviour
     }
     public void die()
     {
+        musicManager.transform.GetChild(0).gameObject.SetActive(true);
+        musicManager.transform.GetChild(1).gameObject.SetActive(false);
         bossUI.transform.GetChild(0).gameObject.SetActive(false);
         Destroy(gameObject);
     }

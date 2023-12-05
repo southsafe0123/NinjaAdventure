@@ -37,12 +37,6 @@ public class ChossenHolder : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(0);
     }
-
-    public void QuitGame()
-    {
-        Debug.Log("Đã thoát");
-        Application.Quit();
-    }
    
     public void Resume()
     {

@@ -28,7 +28,6 @@ public class playerMovement : MonoBehaviour
     {
        
         if (!canDash) StartCoroutine(CooldownDash());
-        Debug.Log("maxhealth:" + PlayerHealth.PlayerMaxHeath + "/" + "health:" + PlayerHealth.PlayerCurrentHealth + "tc:" + Time.timeScale);    
 
         if (isDashing || PlayerHealth.playerGotHit || Time.timeScale == 0||mainCamera == null) return;
 
