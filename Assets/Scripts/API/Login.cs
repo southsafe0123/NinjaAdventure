@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Login : MonoBehaviour
 {
     [SerializeField] private string authenticationEndpoint = "http://172.16.108.160:8686/users/loginGame";
+    [SerializeField] private string authenticationEndpoint2 = "http://172.16.108.160:8686/users/gameInfo";
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
     [SerializeField] private TextMeshProUGUI alertText;
@@ -57,10 +58,24 @@ public class Login : MonoBehaviour
 
                 loginButton.interactable = false;
                 GameAccount gameAccount = JsonUtility.FromJson<GameAccount>(request.downloadHandler.text);
-
+                string url = $"http://172.16.108.160:8686/users/gameInfo/{gameAccount.gameInfor}";
+                UnityWebRequest request2 = UnityWebRequest.Get(url);
+               yield return request2.SendWebRequest();
                 alertText.text = "welcome..."+((gameAccount.role < 1 ) ?  "Admin": gameAccount.name);
-                SceneManager.LoadSceneAsync("LoadSceneTest");
-                Debug.Log(request.downloadHandler.text); ;
+                Loaddata gameInfo = JsonUtility.FromJson<Loaddata>(request2.downloadHandler.text);
+                Debug.Log(request2.downloadHandler.text);
+                PlayerHealth.PlayerMaxHeath = gameInfo.healthMax;
+                PlayerHealth.PlayerCurrentHealth = gameInfo.currentHealth;
+                PlayerStatus.s_Exp = gameInfo.currentExp;
+                PlayerStatus.s_expRequire = gameInfo.expRequire;
+                PlayerStatus.s_level = gameInfo.level;
+                PlayerStatus.s_oldLevel = PlayerStatus.s_level;
+                playerShooting.ShurikenPLayerHave = gameInfo.shirukenNum;
+                shurikenBullet.s_shurikenDamage = gameInfo.shurikenDmg;
+                LoadScene.scenePlayerIn = (int)gameInfo.Scene;
+
+                GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(5);
+                Debug.Log(gameAccount.gameInfor); 
             } else if (request.result== UnityWebRequest.Result.ConnectionError) {
 
                 alertText.text = "Kiểm tra kết nối...";

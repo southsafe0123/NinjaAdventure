@@ -5,13 +5,13 @@ using UnityEngine;
 public class forgotpass : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+   public void onClick()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+   public void forgot()
     {
         
     }

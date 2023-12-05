@@ -1033,6 +1033,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031746252}
     - target: {fileID: 916282101139222062, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 916282101139222062, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: musicManager
       value: 
       objectReference: {fileID: 1713581102}
