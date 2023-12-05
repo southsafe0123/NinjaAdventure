@@ -28,6 +28,25 @@ public class ChossenHolder : MonoBehaviour
         text.color = Color.black;
     }
 
+    public void DisplayChossenAlert()
+    {
+        if (flag != null)
+        {
+            flag.SetActive(true);
+        }
+
+        text.color = Color.white;
+    }
+    public void UnDisplayChossenAlert()
+    {
+        if (flag != null)
+        {
+            flag.SetActive(false);
+        }
+
+        text.color = Color.red;
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
