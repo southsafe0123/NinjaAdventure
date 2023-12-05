@@ -8132,7 +8132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd32c979049e35c4dbd0f1c3d3c25be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  authenticationEndpoint: http://192.168.1.6:6969/users/login
+  authenticationEndpoint: http:// 172.16.108.244:8686/users/login
+  authenticationEndpoint2: http://192.168.68.125:8686/users/gameInfo
   usernameInputField: {fileID: 271463762}
   passwordInputField: {fileID: 200888665}
   alertText: {fileID: 326464861}
@@ -17727,7 +17728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2eb94a4ffa35d641b1ae936a16fd283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  authenticationEndpoint: http://192.168.68.125:8686/users/register
+  authenticationEndpoint: http:// 172.16.108.244:8686/users/register
   emailInputField: {fileID: 1130966551}
   nameInputField: {fileID: 466677245}
   passwordInputField: {fileID: 760366914}

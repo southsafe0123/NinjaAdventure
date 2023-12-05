@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class Login : MonoBehaviour
 {
     [SerializeField] private string authenticationEndpoint = "http://192.168.68.125:8686/users/loginGame";
+
+    [SerializeField] private string authenticationEndpoint2 = "http://192.168.68.125:8686/users/gameInfo";
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
     [SerializeField] private TextMeshProUGUI alertText;
@@ -35,7 +37,10 @@ public class Login : MonoBehaviour
             loginButton.interactable = true;
         }
         else {
-            UnityWebRequest request = UnityWebRequest.Get($"{authenticationEndpoint}?email={username}&password={password}");
+            WWWForm formData = new WWWForm();
+            formData.AddField("email", username);
+            formData.AddField("password", password);
+            UnityWebRequest request = UnityWebRequest.Post(authenticationEndpoint,formData);
             var handler = request.SendWebRequest();
 
             float startTime = 0.0f;
@@ -56,8 +61,10 @@ public class Login : MonoBehaviour
                 GameAccount gameAccount = JsonUtility.FromJson<GameAccount>(request.downloadHandler.text);
 
                 alertText.text = "welcome..."+((gameAccount.role < 1 ) ?  "Admin": gameAccount.name);
+                PlayerData.id = gameAccount.gameInfo;
+                //UnityWebRequest request2 = UnityWebRequest.Get(authenticationEndpoint2,gameAccount.gameInfo);
 
-                Debug.Log(request.downloadHandler.text); ;
+                Debug.Log(request.downloadHandler.text); 
             } else if (request.result== UnityWebRequest.Result.ConnectionError) {
 
                 alertText.text = "Kiểm tra kết nối...";

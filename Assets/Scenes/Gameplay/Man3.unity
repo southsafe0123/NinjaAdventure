@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916282101139222061, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: m_TagString
-      value: wall
+      value: enemy
       objectReference: {fileID: 0}
     - target: {fileID: 916282101139222062, guid: b51524e721bd22e40a63a9b3e73e3f14, type: 3}
       propertyPath: bossUI
