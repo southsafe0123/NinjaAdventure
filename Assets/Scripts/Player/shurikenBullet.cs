@@ -35,9 +35,6 @@ public class shurikenBullet : MonoBehaviour
             StartCoroutine(changeBehavior());
             if (collision.CompareTag("enemy"))
             {
-                var obj = Instantiate(hiteffect, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 180)));
-                var dur = obj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
-                Destroy(obj, dur);
                 foreach (Transform item in transform)
                 {
                     if (item.name == "hitenemy")

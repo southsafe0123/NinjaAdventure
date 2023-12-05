@@ -77,6 +77,7 @@ public class PlayerHealth : MonoBehaviour
         playerGotHit = true;
         sprite.color = new Color(1, 0.47f, 0.47f, 1);
 
+        gameObject.GetComponent<AudioSource>().Play();
 
         Physics2D.IgnoreLayerCollision(8, 9, true);
 

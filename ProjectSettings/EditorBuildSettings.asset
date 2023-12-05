@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Gameplay/Man3.unity
     guid: 744fa0e7d10e16e4aa4d76d35ae66059
   - enabled: 1
+    path: Assets/Scenes/Gameplay/EndScene.unity
+    guid: 95cf333099a8df04f8fee6cef99f9a7e
+  - enabled: 1
     path: Assets/Scenes/Gameplay/PlayerLoadScene.unity
     guid: bb420ee8e78660c49acd33bb8bfbf7f8
   - enabled: 1

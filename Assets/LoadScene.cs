@@ -33,7 +33,7 @@ public class LoadScene : MonoBehaviour
     {
         PlayerSave.ResetStat();
         scenePlayerIn = 1;
-        StartCoroutine(loadScene(4));
+        StartCoroutine(loadScene(5));
     }
     public void LoadSceneNum(int num)
     {

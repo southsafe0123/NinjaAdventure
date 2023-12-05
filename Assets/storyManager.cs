@@ -8,6 +8,6 @@ public class storyManager : MonoBehaviour
     public void endScene()
     {
         LoadScene.scenePlayerIn = 1;
-        GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(4);
+        GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(5);
     }
 }
