@@ -14,7 +14,7 @@ public class LoadScene : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,13 +26,14 @@ public class LoadScene : MonoBehaviour
     }
     public void loadNextScene()
     {
-        StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex+1));
+        gameObject.GetComponent<UpdateDataAccount>().FetchData();
+        gameObject.GetComponent<UpdateDataAccount>().Logout();
+        StartCoroutine(loadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void PlayAgain()
     {
         PlayerSave.ResetStat();
-        scenePlayerIn = 1;
         StartCoroutine(loadScene(5));
     }
     public void LoadSceneNum(int num)
@@ -41,13 +42,18 @@ public class LoadScene : MonoBehaviour
     }
     IEnumerator loadScene(int sceneNum)
     {
+        if (sceneNum != 5 && sceneNum != 0)
+        {
+            scenePlayerIn = sceneNum;
+        }
+
         foreach (Transform children in musicAnimator.transform)
         {
             if (children.GetComponent<Animator>())
             {
                 children.gameObject.GetComponent<Animator>().Play("MusicFadeOut");
             }
-            
+
         }
         anim.SetTrigger("Start");
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;
@@ -55,7 +61,7 @@ public class LoadScene : MonoBehaviour
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(loadTime);
         SceneManager.LoadSceneAsync(sceneNum);
-        
+
     }
     public void loadMenu()
     {
@@ -74,6 +80,10 @@ public class LoadScene : MonoBehaviour
         yield return new WaitForSecondsRealtime(dur);
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(loadTime);
-        Application.Quit();
+        if (!Login.isLogout)
+        {
+            Application.Quit();
+        }
+
     }
 }

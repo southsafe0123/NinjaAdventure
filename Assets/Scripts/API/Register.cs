@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour
 {
-    [SerializeField] private string authenticationEndpoint = "http://172.16.108.160:8686/users/register";
-    
+    [SerializeField] private string ip;
+    [SerializeField] private string port;
     [SerializeField] private TMP_InputField emailInputField;
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
@@ -59,7 +59,7 @@ public class Register : MonoBehaviour
             formData.AddField("role", 1);
            
             string jsonData = JsonUtility.ToJson(model_Register);
-            UnityWebRequest request = UnityWebRequest.Post(authenticationEndpoint,formData);
+            UnityWebRequest request = UnityWebRequest.Post($"http://{ip}:{port}/users/register",formData);
             var handler = request.SendWebRequest();
 
             float startTime = 0.0f;

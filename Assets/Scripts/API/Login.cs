@@ -9,12 +9,14 @@ using UnityEngine.UI;
 
 public class Login : MonoBehaviour
 {
-    [SerializeField] private string authenticationEndpoint = "http://172.16.108.160:8686/users/loginGame";
-    [SerializeField] private string authenticationEndpoint2 = "http://172.16.108.160:8686/users/gameInfo";
+    [SerializeField] private string ip;
+    [SerializeField] private string port;
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
     [SerializeField] private TextMeshProUGUI alertText;
     [SerializeField] private Button loginButton;
+    public static string idGameInfor;
+    public static bool isLogout;
 
     public void clickRegister() {
         SceneManager.LoadScene("Register_Scene");
@@ -32,14 +34,14 @@ public class Login : MonoBehaviour
         string username = usernameInputField.text;
         string password = passwordInputField.text;
         if (username.Equals("") || password.Equals("")) {
-            alertText.text = "Không để trống...";
+            alertText.text = "Don't leave blank";
             loginButton.interactable = true;
         }
         else {
              WWWForm formData = new WWWForm();
             formData.AddField("email", username);
             formData.AddField("password", password);
-            UnityWebRequest request = UnityWebRequest.Post(authenticationEndpoint,formData);
+            UnityWebRequest request = UnityWebRequest.Post($"http://{ip}:{port}/users/loginGame", formData);
             var handler = request.SendWebRequest();
 
             float startTime = 0.0f;
@@ -58,27 +60,32 @@ public class Login : MonoBehaviour
 
                 loginButton.interactable = false;
                 GameAccount gameAccount = JsonUtility.FromJson<GameAccount>(request.downloadHandler.text);
-                string url = $"http://172.16.108.160:8686/users/gameInfo/{gameAccount.gameInfor}";
+
+                //save id infogame for putting data
+                idGameInfor = gameAccount.gameInfor;
+
+                //get data from idGameInfor
+                string url = $"http://{ip}:{port}/users/gameInfo/{gameAccount.gameInfor}";
                 UnityWebRequest request2 = UnityWebRequest.Get(url);
-               yield return request2.SendWebRequest();
-                alertText.text = "welcome..."+((gameAccount.role < 1 ) ?  "Admin": gameAccount.name);
+                 yield return request2.SendWebRequest();
+
                 Loaddata gameInfo = JsonUtility.FromJson<Loaddata>(request2.downloadHandler.text);
                 Debug.Log(request2.downloadHandler.text);
-                PlayerHealth.PlayerMaxHeath = gameInfo.healthMax;
-                PlayerHealth.PlayerCurrentHealth = gameInfo.currentHealth;
-                PlayerStatus.s_Exp = gameInfo.currentExp;
-                PlayerStatus.s_expRequire = gameInfo.expRequire;
-                PlayerStatus.s_level = gameInfo.level;
-                PlayerStatus.s_oldLevel = PlayerStatus.s_level;
-                playerShooting.ShurikenPLayerHave = gameInfo.shirukenNum;
-                shurikenBullet.s_shurikenDamage = gameInfo.shurikenDmg;
-                LoadScene.scenePlayerIn = (int)gameInfo.Scene;
-
+                PlayerSave.SetStats(
+                    gameInfo.Scene,
+                    gameInfo.healthMax,
+                    gameInfo.currentHealth,
+                    gameInfo.shirukenNum,
+                    gameInfo.shurikenDmg,
+                    gameInfo.currentExp,
+                    gameInfo.expRequire,
+                    gameInfo.level
+                    );
                 GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(5);
                 Debug.Log(gameAccount.gameInfor); 
             } else if (request.result== UnityWebRequest.Result.ConnectionError) {
 
-                alertText.text = "Kiểm tra kết nối...";
+                alertText.text = "Lost connection";
                 loginButton.interactable = true;
             }
             else
