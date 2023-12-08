@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    public float maxHealth;
+    public AnimationCurve curveHealth;
+
     [Header("dont need to set health")]
+    public float maxHealth;
     public float health;
     public GameObject prefExp;
     public bool isInCooldownState;
     public float numOfExp;
     public GameObject bossUI;
     public GameObject musicManager;
+    
 
     private void Start()
     {
+        maxHealth = curveHealth.Evaluate(PlayerStatus.s_level);
         health = maxHealth;
     }
     private void OnTriggerEnter2D(Collider2D collision)

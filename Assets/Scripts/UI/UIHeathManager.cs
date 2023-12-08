@@ -50,7 +50,7 @@ public class UIHeathManager : MonoBehaviour
         {
             if(lostHealth == 0)
             {
-                break;
+                objHeathList[i].transform.GetChild(0).GetComponent<Animator>().Play("HeathIdle");
             }
             else
             {

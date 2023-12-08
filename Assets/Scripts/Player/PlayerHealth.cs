@@ -33,6 +33,13 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(gotHitState(collision));
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("healing"))
+        {
+            GameObject.Find("ExpForceField").GetComponent<AudioSource>().Play();
+        }
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();

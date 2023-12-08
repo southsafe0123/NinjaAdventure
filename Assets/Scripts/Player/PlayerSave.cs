@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
+    public static bool isPlayerReset;
     void Awake()
     {
         if (instance != null)
@@ -68,6 +69,7 @@ public class PlayerSave : MonoBehaviour
         PlayerStatus.s_expRequire = 4;
         PlayerStatus.s_level = 0;
         PlayerStatus.s_oldLevel = 0;
+        isPlayerReset = false;
     }
 
     public static void SetStats

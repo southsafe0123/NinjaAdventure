@@ -6,11 +6,17 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static System.Net.WebRequestMethods;
 
 public class Register : MonoBehaviour
 {
+
     [SerializeField] private string ip;
     [SerializeField] private string port;
+
+    [Header("Http or https")]
+    [SerializeField] private string http;
+    public bool useCustomIP;
     [SerializeField] private TMP_InputField emailInputField;
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
@@ -19,8 +25,13 @@ public class Register : MonoBehaviour
     [SerializeField] private Button registerButton;
    
     public void onClick() {
-       // registerButton.interactable = false;
-        
+        // registerButton.interactable = false;
+        if (!useCustomIP)
+        {
+            ip = "ninja-api.onrender.com";
+            port = "";
+            http = "https";
+        }
         StartCoroutine(TryRegister());
     }
 
@@ -45,6 +56,11 @@ public class Register : MonoBehaviour
                 alertText.text = "Check Password Again";
                 yield break;
             }
+            if (!email.Contains("@gmail.com"))
+            {
+                alertText.text = "This Not Gmail";
+                yield break;
+            }
             Model_Register model_Register = new Model_Register
             {
                 email = email,
@@ -59,7 +75,7 @@ public class Register : MonoBehaviour
             formData.AddField("role", 1);
            
             string jsonData = JsonUtility.ToJson(model_Register);
-            UnityWebRequest request = UnityWebRequest.Post($"http://{ip}:{port}/users/register",formData);
+            UnityWebRequest request = UnityWebRequest.Post($"{http}://{ip}:{port}/users/register",formData);
             var handler = request.SendWebRequest();
 
             float startTime = 0.0f;

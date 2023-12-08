@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking;
+using static System.Net.WebRequestMethods;
 
 public class UpdateDataAccount : MonoBehaviour
 {
     public string ip;
     public string port;
+
+    [Header("Http or https")]
+    [SerializeField] private string http;
+    public bool useCustomIP;
     public void FetchData()
     {
+
         if (Login.idGameInfor != null)
         {
+            if (!useCustomIP)
+            {
+                ip = "ninja-api.onrender.com";
+                port = "";
+                http = "https";
+            }
             StartCoroutine(BeginFetch());
         }
         

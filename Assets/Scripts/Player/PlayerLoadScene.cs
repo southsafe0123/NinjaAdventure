@@ -8,6 +8,11 @@ public class PlayerLoadScene : MonoBehaviour
     public Animator loadSceneAnim;
     private void Start()
     {
+        if (PlayerSave.isPlayerReset)
+        {
+            PlayerSave.ResetStat();
+        }
+
         loadSceneAnim.Play("LoadScene_Player");
         SceneManager.LoadSceneAsync(LoadScene.scenePlayerIn);
     }

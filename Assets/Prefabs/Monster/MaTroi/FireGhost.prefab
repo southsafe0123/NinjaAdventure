@@ -269,9 +269,9 @@ MonoBehaviour:
   delayShotBtw: 3.5
   bulletSpeed: 7
   moveSpeed: 3
-  hitLagDur: 0.07
+  hitLagDur: 0
   knockBackDuration: 0.1
-  hitLagWait: 0.3
+  hitLagWait: 0.5
   anim: {fileID: 3148218030043022216}
   sprite: {fileID: 3148218030043022221}
   knockBackForce: 400

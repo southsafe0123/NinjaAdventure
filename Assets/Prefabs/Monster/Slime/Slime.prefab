@@ -236,8 +236,8 @@ MonoBehaviour:
   monsSpeed: 2.7
   knockBackForce: 400
   knockBackDuration: 0.1
-  hitLagWait: 0.3
-  hitLagDur: 0.07
+  hitLagWait: 0.5
+  hitLagDur: 0
   hiteffect: {fileID: 110213014039567456, guid: c4f1cd4070910a94983a886507fc6e77, type: 3}
 --- !u!95 &405813625
 Animator:

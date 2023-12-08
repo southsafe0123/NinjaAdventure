@@ -33,7 +33,7 @@ public class LoadScene : MonoBehaviour
 
     public void PlayAgain()
     {
-        PlayerSave.ResetStat();
+        PlayerSave.isPlayerReset = true;
         StartCoroutine(loadScene(5));
     }
     public void LoadSceneNum(int num)
@@ -80,10 +80,6 @@ public class LoadScene : MonoBehaviour
         yield return new WaitForSecondsRealtime(dur);
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(loadTime);
-        if (!Login.isLogout)
-        {
-            Application.Quit();
-        }
-
+        Application.Quit();
     }
 }

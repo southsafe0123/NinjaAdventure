@@ -11,6 +11,10 @@ public class Login : MonoBehaviour
 {
     [SerializeField] private string ip;
     [SerializeField] private string port;
+
+    [Header("Http or https")]
+    [SerializeField] private string http;
+    public bool useCustomIP;
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
     [SerializeField] private TextMeshProUGUI alertText;
@@ -23,7 +27,12 @@ public class Login : MonoBehaviour
     }
 
     public void OnloginClick() {
-
+        if (!useCustomIP)
+        {
+            ip = "ninja-api.onrender.com";
+            port = "";
+            http = "https";
+        }
         alertText.text = "Sign in...";
         loginButton.interactable = false;
         StartCoroutine(TryLogin());
@@ -41,7 +50,8 @@ public class Login : MonoBehaviour
              WWWForm formData = new WWWForm();
             formData.AddField("email", username);
             formData.AddField("password", password);
-            UnityWebRequest request = UnityWebRequest.Post($"http://{ip}:{port}/users/loginGame", formData);
+            
+            UnityWebRequest request = UnityWebRequest.Post($"{http}://{ip}:{port}/users/loginGame", formData);
             var handler = request.SendWebRequest();
 
             float startTime = 0.0f;
@@ -65,7 +75,7 @@ public class Login : MonoBehaviour
                 idGameInfor = gameAccount.gameInfor;
 
                 //get data from idGameInfor
-                string url = $"http://{ip}:{port}/users/gameInfo/{gameAccount.gameInfor}";
+                string url = $"{http}://{ip}:{port}/users/gameInfo/{gameAccount.gameInfor}";
                 UnityWebRequest request2 = UnityWebRequest.Get(url);
                  yield return request2.SendWebRequest();
 
