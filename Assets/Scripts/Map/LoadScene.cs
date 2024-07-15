@@ -47,13 +47,15 @@ public class LoadScene : MonoBehaviour
             scenePlayerIn = sceneNum;
         }
 
-        foreach (Transform children in musicAnimator.transform)
+        foreach (AudioSource audio in MusicManager.Instance.audioMusics)
         {
-            if (children.GetComponent<Animator>())
+            if (audio.gameObject.activeInHierarchy)
             {
-                children.gameObject.GetComponent<Animator>().Play("MusicFadeOut");
+                MusicManager.Instance.AudioFade(audio.gameObject.name, 0, 1f, () =>
+                {
+                    audio.gameObject.SetActive(false);
+                });
             }
-
         }
         anim.SetTrigger("Start");
         var dur = anim.GetCurrentAnimatorClipInfo(0).Length;

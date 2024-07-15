@@ -57,7 +57,7 @@ TextureImporter:
       213: -7748327806529685465
     second: TilesetVillageAbandoned_17
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -74,10 +74,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -116,6 +118,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -128,6 +131,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -140,6 +144,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -152,6 +157,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -545,9 +551,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      TilesetVillageAbandoned_0: -166535132258244313
+      TilesetVillageAbandoned_1: 740334008321051356
+      TilesetVillageAbandoned_10: -6231818802067207859
+      TilesetVillageAbandoned_11: 7366969427787349588
+      TilesetVillageAbandoned_12: -4324661692743233313
+      TilesetVillageAbandoned_13: 6828202411364062018
+      TilesetVillageAbandoned_14: -510030727570979877
+      TilesetVillageAbandoned_15: 1472651739985459852
+      TilesetVillageAbandoned_16: 1603897577594870643
+      TilesetVillageAbandoned_17: -7748327806529685465
+      TilesetVillageAbandoned_2: 6912793863278169747
+      TilesetVillageAbandoned_3: -5445801638668931622
+      TilesetVillageAbandoned_4: -1876886626301937862
+      TilesetVillageAbandoned_5: 6312752666993971378
+      TilesetVillageAbandoned_6: -5638910495178046104
+      TilesetVillageAbandoned_7: 5592033572453561788
+      TilesetVillageAbandoned_8: -3465302088307954273
+      TilesetVillageAbandoned_9: -7010548092787920323
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

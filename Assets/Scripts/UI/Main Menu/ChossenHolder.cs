@@ -8,7 +8,7 @@ public class ChossenHolder : MonoBehaviour
 {
     public GameObject flag;
     public Text text;
-
+    public Image color;
     public void DisplayChossen()
     {
         if (flag != null)
