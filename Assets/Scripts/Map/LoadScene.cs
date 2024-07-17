@@ -10,11 +10,16 @@ public class LoadScene : MonoBehaviour
     public Animator anim;
     public float loadTime = 3f;
     public static int scenePlayerIn;
-    public GameObject musicAnimator;
     // Update is called once per frame
     void Start()
     {
-
+        foreach (AudioSource audio in MusicManager.Instance.audioMusics)
+        {
+            if (audio.gameObject.activeInHierarchy)
+            {
+                MusicManager.Instance.AudioFade(audio.gameObject.name, MusicManager.Instance.musicVolume, 1f);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,10 +56,7 @@ public class LoadScene : MonoBehaviour
         {
             if (audio.gameObject.activeInHierarchy)
             {
-                MusicManager.Instance.AudioFade(audio.gameObject.name, 0, 1f, () =>
-                {
-                    audio.gameObject.SetActive(false);
-                });
+                MusicManager.Instance.AudioFade(audio.gameObject.name, 0, 1f);
             }
         }
         anim.SetTrigger("Start");

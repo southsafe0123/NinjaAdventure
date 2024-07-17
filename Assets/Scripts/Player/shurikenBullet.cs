@@ -35,29 +35,13 @@ public class shurikenBullet : MonoBehaviour
             StartCoroutine(changeBehavior());
             if (collision.CompareTag("enemy"))
             {
-                foreach (Transform item in transform)
-                {
-                    if (item.name == "hitenemy")
-                    {
-                        Debug.Log(item.name);
-                        item.GetComponent<AudioSource>().Play();
-                    }
-                }
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND);
             }
 
             if (collision.CompareTag("wall"))
             {
-                foreach (Transform item in transform)
-                {
-                    if (item.name == "hitwall")
-                    {
-                        Debug.Log(item.name);
-                        item.GetComponent<AudioSource>().Play();
-                    }
-                }
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND);
             }
-
-            
         }
 
     }
@@ -70,6 +54,5 @@ public class shurikenBullet : MonoBehaviour
         yield return null;
         gameObject.tag = "GrShuriken";
         arrow.SetActive(true);
-        StopCoroutine(changeBehavior());
     }
 }
