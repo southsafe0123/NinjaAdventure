@@ -6,7 +6,7 @@ public class VolumeSliderSetting : MonoBehaviour
     public Slider slider;
     private void Start()
     {
-        slider.value = 0.2f;
+        slider.value = MusicManager.Instance.musicVolume;
     }
     public void OnValueChange()
     { 

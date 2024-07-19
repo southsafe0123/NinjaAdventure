@@ -16,6 +16,9 @@ public static class MusicManagerAudioName
     public const string PLAYER_GOT_EXP_SOUND = "playerGotExp";
     public const string SHURIKEN_WALL_HIT_SOUND = "ShurikenWallHit";
     public const string SHURIKEN_ENEMY_HIT_SOUND = "ShurikenEnemyHit";
+    public const string FROG_HIT_WALL_SOUND = "FrogHitWall";
+    public const string ALERT_SHURIKEN_GO_BACK_SOUND = "AlertShurikenGoBack";
+    public const string DASH_SOUND = "Dash";
 }
 
 public class MusicManager : MonoBehaviour
@@ -35,24 +38,25 @@ public class MusicManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+            SetMusicVolume(musicVolume);
+            SetSFXVolume(soundVolume);
         }
         else Destroy(gameObject);
-    }
-    private void Start()
-    {
-        musicVolume = 0.2f;
-        soundVolume = 0.2f;
     }
 
     public void SetMusicVolume(float musicVolume)
     {
         this.musicVolume = musicVolume;
         var audioSourceBGMusic = GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC);
-        var audioSourceBossMusic = GetAudioSource(MusicManagerAudioName.BOSS_MUSIC);
-        var audioSourceDieMusic = GetAudioSource(MusicManagerAudioName.DIE_MUSIC);
         audioSourceBGMusic.volume = musicVolume;
-        audioSourceBossMusic.volume = musicVolume;
-        audioSourceDieMusic.volume = musicVolume;
+    }
+    public void SetSFXVolume(float soundVolume)
+    {
+        this.soundVolume = soundVolume;
+        foreach (AudioSource audio in audioSounds)
+        {
+            audio.volume = soundVolume;
+        }
     }
     public AudioSource GetAudioSource(string audioName)
     {

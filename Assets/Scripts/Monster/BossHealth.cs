@@ -19,12 +19,27 @@ public class BossHealth : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = curveHealth.Evaluate(PlayerStatus.s_level);
+        //maxHealth = curveHealth.Evaluate(PlayerStatus.s_level);
         health = maxHealth;
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("shuriken") && isInCooldownState)
+        if (collision.CompareTag("shuriken"))
+        {
+            if (isInCooldownState)
+            {
+                GetDamage(shurikenBullet.s_shurikenDamage);
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Stop();
+            }
+            else
+            {
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Stop();
+                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
+            }
+        }
+        if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback && isInCooldownState)
         {
             GetDamage(shurikenBullet.s_shurikenDamage);
         }
@@ -34,9 +49,8 @@ public class BossHealth : MonoBehaviour
     }
     public void die()
     {
-        musicManager.transform.GetChild(0).gameObject.SetActive(true);
-        musicManager.transform.GetChild(1).gameObject.SetActive(false);
-        bossUI.transform.GetChild(0).gameObject.SetActive(false);
+        MusicManager.Instance.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 5);
+        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Play();
         Destroy(gameObject);
     }
     public IEnumerator spawnEXP()

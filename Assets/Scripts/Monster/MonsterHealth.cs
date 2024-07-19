@@ -14,9 +14,15 @@ public class MonsterHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GetComponent<MonsterBehavior>().isGotHitCooldown == true) return;
         if (collision.CompareTag("shuriken"))
         {
             GetDamage(shurikenBullet.s_shurikenDamage);
+        }
+        if(collision.CompareTag("GrShuriken")&& collision.GetComponent<shurikenBullet>().isGoback)
+        {
+            GetDamage(shurikenBullet.s_shurikenDamage);
+            
         }
     }
     private void Update()
@@ -29,7 +35,7 @@ public class MonsterHealth : MonoBehaviour
         }
     }
 
-    void GetDamage(float damage)
+    public void GetDamage(float damage)
     {
 
         health -= (int)damage;

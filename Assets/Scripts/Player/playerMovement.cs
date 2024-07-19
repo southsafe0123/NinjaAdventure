@@ -39,6 +39,7 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && canDash && !isDashing)
         {
+
             StartCoroutine(playerDashing());
         }
 
@@ -81,9 +82,15 @@ public class playerMovement : MonoBehaviour
         isDashing = true;
         tr.emitting = true;
 
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        Physics2D.IgnoreLayerCollision(7, 9, true);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
         rb.AddForce((dashDirection).normalized * dashSpeed, ForceMode2D.Impulse);
+        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.DASH_SOUND).Play();
         yield return new WaitForSeconds(dashDuration);
-
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(7, 9, false);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         isDashing = false;
         tr.emitting = false;
     }
@@ -102,8 +109,6 @@ public class playerMovement : MonoBehaviour
 
     public void resetCooldownDash()
     {
-        StopCoroutine(CooldownDash());
-        StartCoroutine(HitStop());
         timer = 0;
         canDash = true;
     }

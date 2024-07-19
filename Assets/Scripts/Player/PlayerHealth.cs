@@ -28,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 gameObject.SetActive(true);
-                
             }
             StartCoroutine(gotHitState(collision));
         }
@@ -37,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.CompareTag("healing"))
         {
-            GameObject.Find("ExpForceField").GetComponent<AudioSource>().Play();
+            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_EXP_SOUND).Play();
         }
     }
     private void Start()
@@ -84,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
         playerGotHit = true;
         sprite.color = new Color(1, 0.47f, 0.47f, 1);
 
-        gameObject.GetComponent<AudioSource>().Play();
+        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_HIT_SOUND).Play();
 
         Physics2D.IgnoreLayerCollision(8, 9, true);
 

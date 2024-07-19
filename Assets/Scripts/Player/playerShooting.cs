@@ -63,10 +63,7 @@ public class playerShooting : MonoBehaviour
     {
         if (collision.CompareTag("GrShuriken"))
         {
-            if (player.timer != 0)
-            {
-                player.resetCooldownDash();
-            }
+            player.resetCooldownDash();
             isShooting = false;
             ShurikenPLayerHave++;
             Destroy(collision.gameObject,0.03f);

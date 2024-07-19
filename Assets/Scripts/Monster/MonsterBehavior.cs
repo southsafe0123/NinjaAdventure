@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterBehavior : MonoBehaviour
@@ -16,6 +17,7 @@ public class MonsterBehavior : MonoBehaviour
     private Animator anim;
     public float hitLagDur;
     public GameObject hiteffect;
+    public bool isGotHitCooldown;
 
     private void Start()
     {
@@ -40,24 +42,28 @@ public class MonsterBehavior : MonoBehaviour
     {
         if (collision.CompareTag("shuriken"))
         {
-            //hit by shuriken
             StartCoroutine(startBehaviorHit(collision));
         }
+
+        if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback)
+        {
+            StartCoroutine(startBehaviorHit(collision));
+        }
+       
     }
 
-    private IEnumerator startBehaviorHit(Collider2D collision)
+    public IEnumerator startBehaviorHit(Collider2D collision)
     {
-
-
         knockBackState(collision);
 
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(hitLagDur);
         Time.timeScale = 1;
-        
+        isGotHitCooldown = true;
+
         yield return new WaitForSeconds(knockBackDuration);
         alertState();
-        
+        isGotHitCooldown = false;
         yield return new WaitForSeconds(hitLagWait);
         endKnockBackState();
     }

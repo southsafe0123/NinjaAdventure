@@ -8,6 +8,9 @@ public class MainMenu_Script : MonoBehaviour
 
     private void Start()
     {
+
+        playerShooting.ShurikenPLayerHave = PlayerSave.defaultShurikenPlayerHave;
+
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0: MusicManager.Instance.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 0);

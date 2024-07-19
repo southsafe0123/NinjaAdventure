@@ -8,6 +8,7 @@ public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
     public static bool isPlayerReset;
+    public static float defaultShurikenPlayerHave;
     void Awake()
     {
         if (instance != null)
@@ -18,7 +19,7 @@ public class PlayerSave : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(this.gameObject);
-
+        defaultShurikenPlayerHave = 1;
         Application.targetFrameRate = 60;
     }
 
@@ -69,6 +70,7 @@ public class PlayerSave : MonoBehaviour
         PlayerStatus.s_expRequire = 4;
         PlayerStatus.s_level = 0;
         PlayerStatus.s_oldLevel = 0;
+        defaultShurikenPlayerHave = 1;
         isPlayerReset = false;
     }
 
@@ -97,6 +99,7 @@ public class PlayerSave : MonoBehaviour
     public void addShuriken()
     {
         playerShooting.ShurikenPLayerHave++;
+        defaultShurikenPlayerHave++;
     }
 
     public void addHealth()

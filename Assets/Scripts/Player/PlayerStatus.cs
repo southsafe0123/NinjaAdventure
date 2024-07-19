@@ -61,5 +61,6 @@ public class PlayerStatus : MonoBehaviour
     public static void expUpdate()
     {
         s_Exp += s_expPickUpVariable;
+
     }
 }
