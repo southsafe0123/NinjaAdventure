@@ -154,6 +154,10 @@ public class MatroiMovement : MonoBehaviour
             //hit by shuriken
             StartCoroutine(startBehaviorHit(collision));
         }
+        if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback)
+        {
+            StartCoroutine(startBehaviorHit(collision));
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

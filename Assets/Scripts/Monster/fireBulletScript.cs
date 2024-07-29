@@ -33,6 +33,10 @@ public class fireBulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback)
+        {
+            Destroy(gameObject);
+        }
     }
     // Update is called once per frame
     void Update()

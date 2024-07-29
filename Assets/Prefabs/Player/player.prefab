@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1994344276
 Transform:
   m_ObjectHideFlags: 0
@@ -979,7 +979,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1729934717
 BoxCollider2D:
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   expRequire: 2
-  nextLevelExpRequire: 3
+  nextLevelExpRequire: 2
   expPickUpVariable: 1
   maxLevel: 4
 --- !u!114 &146434669

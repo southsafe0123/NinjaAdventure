@@ -68,12 +68,14 @@ public class PlayerHealth : MonoBehaviour
     {
         playerInvis = false;
         sprite.color = new Color(1, 1, 1, 1);
+        GetComponent<playerMovement>().moveSpeed = GetComponent<playerMovement>().moveSpeed - 3f;
         Physics2D.IgnoreLayerCollision(8, 9, false);
     }
 
     private void invisState()
     {
         playerGotHit = false;
+        GetComponent<playerMovement>().moveSpeed = GetComponent<playerMovement>().moveSpeed + 3f;
         sprite.color = new Color(1, 1, 1, 0.5f);
     }
 

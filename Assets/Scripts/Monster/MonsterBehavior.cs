@@ -55,7 +55,7 @@ public class MonsterBehavior : MonoBehaviour
     public IEnumerator startBehaviorHit(Collider2D collision)
     {
         knockBackState(collision);
-
+        if (Time.timeScale != 0)
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(hitLagDur);
         Time.timeScale = 1;

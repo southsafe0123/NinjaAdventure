@@ -20,6 +20,10 @@ public class FireGhostHealth : MonoBehaviour
         {
             GetDamage(shurikenBullet.s_shurikenDamage);
         }
+        if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback)
+        {
+            GetDamage(shurikenBullet.s_shurikenDamage);
+        }
     }
     private void Update()
     {
