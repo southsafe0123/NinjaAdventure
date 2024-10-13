@@ -535,6 +535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChangeScenePos
       objectReference: {fileID: 0}
+    - target: {fileID: 4510305439238571945, guid: e9c6e33da65769946be9225bc9cc9be2, type: 3}
+      propertyPath: sceneIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4589963696921693707, guid: e9c6e33da65769946be9225bc9cc9be2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.32

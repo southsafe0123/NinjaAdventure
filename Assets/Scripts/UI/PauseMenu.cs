@@ -11,20 +11,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseButtonObject;
     public bool isPauseClick;
-    private void Start()
+    private void Update()
     {
-        
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 4)
         {
             DisplayPauseButton(false);
         }
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (SceneManager.GetActiveScene().buildIndex == 0) return;
+            if (SceneManager.GetActiveScene().buildIndex == 4) return;
             TogglePause();
         }
+       
     }
 
     public void ShowMenu()
@@ -42,7 +41,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
-        
+
     }
     public void isClicked()
     {

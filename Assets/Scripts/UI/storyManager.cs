@@ -7,6 +7,6 @@ public class storyManager : MonoBehaviour
     public void endScene()
     {
         GameSystem.LoadScene.scenePlayerIn = 1;
-        GameSystem.LoadScene.LoadSceneNum(5);
+        GameSystem.LoadScene.LoadSceneNum(1);
     }
 }

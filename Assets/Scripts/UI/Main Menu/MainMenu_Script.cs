@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu_Script : MonoBehaviour
 {
 
-    private void Start()
+    private IEnumerator Start()
     {
 
         playerShooting.ShurikenPLayerHave = PlayerSave.defaultShurikenPlayerHave;
 
+        yield return new WaitUntil(() => GameSystem.MusicSystem != null);
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:

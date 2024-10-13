@@ -54,8 +54,8 @@ public class LoadScene : MonoBehaviour
 
     public void PlayAgain()
     {
-        PlayerSave.isPlayerReset = true;
-        StartCoroutine(loadScene(5));
+        PlayerSave.ResetStat();
+        StartCoroutine(loadScene(1));
     }
     public void LoadSceneNum(int num)
     {
@@ -85,6 +85,7 @@ public class LoadScene : MonoBehaviour
     }
     public void loadMenu()
     {
+        PlayerSave.ResetStat();
         StartCoroutine(loadScene(0));
     }
 

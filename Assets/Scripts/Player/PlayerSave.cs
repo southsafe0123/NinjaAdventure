@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerSave : MonoBehaviour
 {
     public static PlayerSave instance;
-    public static bool isPlayerReset;
     public static float defaultShurikenPlayerHave;
     void Awake()
     {
@@ -71,7 +70,6 @@ public class PlayerSave : MonoBehaviour
         PlayerStatus.s_level = 0;
         PlayerStatus.s_oldLevel = 0;
         defaultShurikenPlayerHave = 1;
-        isPlayerReset = false;
     }
 
     public static void SetStats
