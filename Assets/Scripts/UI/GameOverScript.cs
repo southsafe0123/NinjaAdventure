@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameOverScript : MonoBehaviour
 {
     public GameObject gameoverPanel;
-    public bool isPopupGameover = false;
+    private bool isPopupGameover = false;
     private void Update()
     {
         if (PlayerHealth.PlayerCurrentHealth <= 0 && !isPopupGameover)
         {
-            isPopupGameover = true;
+            SetIsPopupGameover(true);
             gameoverPanel.SetActive(true);
-            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Stop();
-            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.DIE_MUSIC).Play();
+            GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Stop();
+            GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.DIE_MUSIC).Play();
 
         }
+    }
+    public void SetIsPopupGameover(bool isActive)
+    {
+        isPopupGameover = isActive;
     }
 }

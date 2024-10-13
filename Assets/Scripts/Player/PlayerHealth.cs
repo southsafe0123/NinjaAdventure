@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.CompareTag("healing"))
         {
-            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_EXP_SOUND).Play();
+            GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_EXP_SOUND).Play();
         }
     }
     private void Start()
@@ -85,7 +85,7 @@ public class PlayerHealth : MonoBehaviour
         playerGotHit = true;
         sprite.color = new Color(1, 0.47f, 0.47f, 1);
 
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_HIT_SOUND).Play();
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.PLAYER_GOT_HIT_SOUND).Play();
 
         Physics2D.IgnoreLayerCollision(8, 9, true);
 

@@ -3,20 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public bool isPause;
     public GameObject pauseMenu;
+    public GameObject pauseButtonObject;
     public bool isPauseClick;
-    private GameObject musicManager;
     private void Start()
     {
-        musicManager = GameObject.Find("MusicManager");
+        
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            DisplayPauseButton(false);
+        }
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             TogglePause();
         }
@@ -28,7 +33,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
     }
 
- 
+    public void DisplayPauseButton(bool isActive)
+    {
+        pauseButtonObject.SetActive(isActive);
+    }
 
     public void HideMenu()
     {

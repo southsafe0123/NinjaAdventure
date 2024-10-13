@@ -23,8 +23,6 @@ public static class MusicManagerAudioName
 
 public class MusicManager : MonoBehaviour
 {
-    public static MusicManager Instance;
-
     public float musicVolume;
     public float soundVolume;
 
@@ -34,14 +32,8 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
             SetMusicVolume(musicVolume);
             SetSFXVolume(soundVolume);
-        }
-        else Destroy(gameObject);
     }
 
     public void SetMusicVolume(float musicVolume)

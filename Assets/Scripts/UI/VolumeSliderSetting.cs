@@ -6,10 +6,10 @@ public class VolumeSliderSetting : MonoBehaviour
     public Slider slider;
     private void Start()
     {
-        slider.value = MusicManager.Instance.musicVolume;
+        slider.value = GameSystem.MusicSystem.musicVolume;
     }
     public void OnValueChange()
-    { 
-        MusicManager.Instance.SetMusicVolume(slider.value);
+    {
+        GameSystem.MusicSystem.SetMusicVolume(slider.value);
     }
 }

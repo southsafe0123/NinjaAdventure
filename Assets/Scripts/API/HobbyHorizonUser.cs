@@ -19,7 +19,6 @@ public class HobbyHorizonUser : MonoBehaviour
     [SerializeField] private TMP_InputField locationInputField;
     [SerializeField] private TextMeshProUGUI alertText;
     [SerializeField] private Button confirmButton;
-    [SerializeField] private LoadScene loadScene;
 
     public void onClick()
     {
@@ -88,7 +87,7 @@ public class HobbyHorizonUser : MonoBehaviour
             {
                 alertText.text = "Success";
                 yield return new WaitForSeconds(0.5f);
-                loadScene.PlayAgain();
+                GameSystem.LoadScene.PlayAgain();
             }
             else
             {

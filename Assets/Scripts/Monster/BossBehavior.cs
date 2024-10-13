@@ -58,7 +58,7 @@ public class BossBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("wall") && inCDState)
         {
-            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.FROG_HIT_WALL_SOUND).Play();
+            GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.FROG_HIT_WALL_SOUND).Play();
             StartCoroutine(camShake.camShake(timeCamShake,magnitudeCamShake));
         }
     }

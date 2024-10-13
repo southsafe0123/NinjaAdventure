@@ -13,8 +13,8 @@ public class BossTriggerState : StateMachineBehaviour
         musicManager = GameObject.Find("MusicManager");
 
         bossUI.transform.GetChild(0).gameObject.SetActive(true);
-        MusicManager.Instance.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 6);
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Play();
+        GameSystem.MusicSystem.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 6);
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

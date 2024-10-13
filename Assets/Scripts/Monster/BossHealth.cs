@@ -30,13 +30,13 @@ public class BossHealth : MonoBehaviour
             if (isInCooldownState)
             {
                 GetDamage(shurikenBullet.s_shurikenDamage);
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Stop();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Stop();
             }
             else
             {
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Stop();
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Stop();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
             }
         }
         if (collision.CompareTag("GrShuriken") && collision.GetComponent<shurikenBullet>().isGoback && isInCooldownState)
@@ -49,8 +49,8 @@ public class BossHealth : MonoBehaviour
     }
     public void die()
     {
-        MusicManager.Instance.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 5);
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Play();
+        GameSystem.MusicSystem.SetAudioClipForAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC, 5);
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.BACKGROUND_MUSIC).Play();
         Destroy(gameObject);
     }
     public IEnumerator spawnEXP()

@@ -62,18 +62,18 @@ public class shurikenBullet : MonoBehaviour
             {
                 if (collision.CompareTag("enemy") && isGoback)
                 {
-                    MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
+                    GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
                 }
                 return;
             }
             if (collision.CompareTag("enemy"))
             {
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_ENEMY_HIT_SOUND).Play();
             }
 
             if (collision.CompareTag("wall"))
             {
-                MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
+                GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
             }
         }
 
@@ -95,7 +95,7 @@ public class shurikenBullet : MonoBehaviour
         tweener = transform.DOMove(lastedPlayerPos, 0.5f).SetEase(Ease.InBack);
         anim.enabled = true;
         arrow.SetActive(false);
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.ALERT_SHURIKEN_GO_BACK_SOUND).Play();
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.ALERT_SHURIKEN_GO_BACK_SOUND).Play();
 
         coroutine = null;
     }

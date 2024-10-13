@@ -10,20 +10,20 @@ public class SoundSliderSetting : MonoBehaviour
     private void Start()
     {
         isFirstLoad = true;
-        slider.value = MusicManager.Instance.soundVolume;
+        slider.value = GameSystem.MusicSystem.soundVolume;
     }
     public void OnValueChange()
     {
 
-        MusicManager.Instance.SetSFXVolume(slider.value);
-        if (MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).isPlaying) return;
+        GameSystem.MusicSystem.SetSFXVolume(slider.value);
+        if (GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).isPlaying) return;
         if (isFirstLoad)
         {
             isFirstLoad = false;
         }
         else
         {
-            MusicManager.Instance.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
+            GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.SHURIKEN_WALL_HIT_SOUND).Play();
 
         }
     }

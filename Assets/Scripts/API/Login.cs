@@ -22,11 +22,13 @@ public class Login : MonoBehaviour
     public static string idGameInfor;
     public static bool isLogout;
 
-    public void clickRegister() {
+    public void clickRegister()
+    {
         SceneManager.LoadScene("Register_Scene");
     }
 
-    public void OnloginClick() {
+    public void OnloginClick()
+    {
         if (!useCustomIP)
         {
             ip = "ninja-api.onrender.com";
@@ -37,20 +39,23 @@ public class Login : MonoBehaviour
         loginButton.interactable = false;
         StartCoroutine(TryLogin());
     }
-    private IEnumerator TryLogin() {
+    private IEnumerator TryLogin()
+    {
 
 
         string username = usernameInputField.text;
         string password = passwordInputField.text;
-        if (username.Equals("") || password.Equals("")) {
+        if (username.Equals("") || password.Equals(""))
+        {
             alertText.text = "Don't leave blank";
             loginButton.interactable = true;
         }
-        else {
-             WWWForm formData = new WWWForm();
+        else
+        {
+            WWWForm formData = new WWWForm();
             formData.AddField("email", username);
             formData.AddField("password", password);
-            
+
             UnityWebRequest request = UnityWebRequest.Post($"{http}://{ip}:{port}/users/loginGame", formData);
             var handler = request.SendWebRequest();
 
@@ -77,7 +82,7 @@ public class Login : MonoBehaviour
                 //get data from idGameInfor
                 string url = $"{http}://{ip}:{port}/users/gameInfo/{gameAccount.gameInfor}";
                 UnityWebRequest request2 = UnityWebRequest.Get(url);
-                 yield return request2.SendWebRequest();
+                yield return request2.SendWebRequest();
 
                 Loaddata gameInfo = JsonUtility.FromJson<Loaddata>(request2.downloadHandler.text);
                 Debug.Log(request2.downloadHandler.text);
@@ -91,9 +96,11 @@ public class Login : MonoBehaviour
                     gameInfo.expRequire,
                     gameInfo.level
                     );
-                GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(5);
-                Debug.Log(gameAccount.gameInfor); 
-            } else if (request.result== UnityWebRequest.Result.ConnectionError) {
+                GameSystem.LoadScene.LoadSceneNum(5);
+                Debug.Log(gameAccount.gameInfor);
+            }
+            else if (request.result == UnityWebRequest.Result.ConnectionError)
+            {
 
                 alertText.text = "Lost connection";
                 loginButton.interactable = true;
@@ -104,7 +111,7 @@ public class Login : MonoBehaviour
                 ErrorResponse errorResponse = JsonUtility.FromJson<ErrorResponse>(jsonString);
 
                 alertText.text = errorResponse.error;
-             
+
                 loginButton.interactable = true;
             }
         }

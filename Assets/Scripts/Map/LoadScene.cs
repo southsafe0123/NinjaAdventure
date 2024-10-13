@@ -9,26 +9,42 @@ public class LoadScene : MonoBehaviour
 {
     public Animator anim;
     public float loadTime = 3f;
-    public static int scenePlayerIn;
+    public int scenePlayerIn;
+
+    public static bool isAlreadyRegisterEvent = false;
     // Update is called once per frame
     void Start()
     {
-        foreach (AudioSource audio in MusicManager.Instance.audioMusics)
+
+        if (isAlreadyRegisterEvent) return;
+        isAlreadyRegisterEvent = true;
+        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+    }
+
+    private void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    {
+        foreach (AudioSource audio in GameSystem.MusicSystem.audioMusics)
         {
             if (audio.gameObject.activeInHierarchy)
             {
-                MusicManager.Instance.AudioFade(audio.gameObject.name, MusicManager.Instance.musicVolume, 1f);
+                GameSystem.MusicSystem.AudioFade(audio.gameObject.name, GameSystem.MusicSystem.musicVolume, 1f);
             }
+        }
+        anim.Play("LoadScene_End");
+        GameSystem.GameOver.SetIsPopupGameover(false);
+        GameSystem.PauseSystem.isPause = false;
+
+        if(arg1.buildIndex == 0)
+        {
+            GameSystem.PauseSystem.DisplayPauseButton(false);
+        }
+        else
+        {
+            GameSystem.PauseSystem.DisplayPauseButton(true);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            loadNextScene();
-        }
-    }
+
     public void loadNextScene()
     {
         gameObject.GetComponent<UpdateDataAccount>().FetchData();
@@ -52,11 +68,11 @@ public class LoadScene : MonoBehaviour
             scenePlayerIn = sceneNum;
         }
 
-        foreach (AudioSource audio in MusicManager.Instance.audioMusics)
+        foreach (AudioSource audio in GameSystem.MusicSystem.audioMusics)
         {
             if (audio.gameObject.activeInHierarchy)
             {
-                MusicManager.Instance.AudioFade(audio.gameObject.name, 0, 1f);
+                GameSystem.MusicSystem.AudioFade(audio.gameObject.name, 0, 1f);
             }
         }
         anim.SetTrigger("Start");

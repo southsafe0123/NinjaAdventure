@@ -18,7 +18,7 @@ public class ChossenHolder : MonoBehaviour
 
         text.color = Color.white;
 
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.HOVER_SOUND).Play();
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.HOVER_SOUND).Play();
     }
     public void UnDisplayChossen()
     {
@@ -32,7 +32,7 @@ public class ChossenHolder : MonoBehaviour
 
     public void OnPointerClick()
     {
-        MusicManager.Instance.GetAudioSource(MusicManagerAudioName.CLICK_SOUND).Play();
+        GameSystem.MusicSystem.GetAudioSource(MusicManagerAudioName.CLICK_SOUND).Play();
     }
 
     public void DisplayChossenAlert()

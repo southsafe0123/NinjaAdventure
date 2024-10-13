@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class storyManager : MonoBehaviour
 {
-
     public void endScene()
     {
-        LoadScene.scenePlayerIn = 1;
-        GameObject.Find("LoadScene").GetComponent<LoadScene>().LoadSceneNum(5);
+        GameSystem.LoadScene.scenePlayerIn = 1;
+        GameSystem.LoadScene.LoadSceneNum(5);
     }
 }

@@ -14,7 +14,7 @@ public class PlayerLoadScene : MonoBehaviour
         }
 
         loadSceneAnim.Play("LoadScene_Player");
-        SceneManager.LoadSceneAsync(LoadScene.scenePlayerIn);
+        SceneManager.LoadSceneAsync(GameSystem.LoadScene.scenePlayerIn);
     }
 
 }

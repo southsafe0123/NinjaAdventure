@@ -40,7 +40,7 @@ public class PlayerSave : MonoBehaviour
         switch (valueType)
         {
             case ValueType.scene:
-                return LoadScene.scenePlayerIn;
+                return GameSystem.LoadScene.scenePlayerIn;
             case ValueType.shurikenNum:
                 return playerShooting.ShurikenPLayerHave;
             case ValueType.maxHealth:
@@ -61,7 +61,7 @@ public class PlayerSave : MonoBehaviour
     }
     public static void ResetStat()
     {
-        LoadScene.scenePlayerIn = 1;
+        GameSystem.LoadScene.scenePlayerIn = 1;
         playerShooting.ShurikenPLayerHave = 1;
         PlayerHealth.PlayerMaxHeath = 2;
         PlayerHealth.PlayerCurrentHealth = 2;
@@ -86,7 +86,7 @@ public class PlayerSave : MonoBehaviour
         float level
         )
     {
-        LoadScene.scenePlayerIn = (int)scenePlayerIn;
+        GameSystem.LoadScene.scenePlayerIn = (int)scenePlayerIn;
         PlayerHealth.PlayerMaxHeath = playerMaxHealth;
         PlayerHealth.PlayerCurrentHealth = playerCurrentHealth;
         playerShooting.ShurikenPLayerHave = shurikenNum;
